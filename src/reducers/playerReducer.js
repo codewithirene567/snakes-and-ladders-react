@@ -1,4 +1,4 @@
-function playerReducer(state = { player: []}, action) {
+const playerReducer = (state = { player: []}, action) => {
     switch (action.type) {
    
     //   case '':
@@ -19,3 +19,5 @@ function playerReducer(state = { player: []}, action) {
         return state;
     }
   };
+
+  export default playerReducer;

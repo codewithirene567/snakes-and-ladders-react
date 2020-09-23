@@ -1,4 +1,5 @@
-function gameReducer(state = { game: []}, action) {
+
+const gameReducer = (state = { game: []}, action) => {
     switch (action.type) {
    
     //   case '':
@@ -19,3 +20,5 @@ function gameReducer(state = { game: []}, action) {
         return state;
     }
   };
+
+  export default gameReducer;

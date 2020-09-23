@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import rootReducer from './reducers/index'
+//import rootReducer from './reducers/index'
 
 function App() {
   return (
