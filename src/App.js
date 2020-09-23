@@ -1,10 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Board from './components/board';
+
 //import rootReducer from './reducers/index'
 
 function App() {
   return (
+    <div>
+   <Board />
    
     <div className="App">
       <header className="App-header">
@@ -21,6 +25,7 @@ function App() {
         
         </a>
       </header>
+    </div>
     </div>
   );
 }

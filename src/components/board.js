@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Square from './square';
 
-export default class Board extends Component {
+class Board extends Component {
 
 makeSquares = (i) => {
     return <Square value={this.props.squares[i]}
@@ -12,6 +12,7 @@ makeSquares = (i) => {
 
     render () {
         return (
+            <div>
             <div className="row">
               {this.makeSquares(0)}
               {this.makeSquares(1)}
@@ -132,7 +133,9 @@ makeSquares = (i) => {
         {this.makeSquares(98)}
         {this.makeSquares(99)}
         </div>
-
-        )
+</div>
+        );
     }
 }
+
+export default Board
