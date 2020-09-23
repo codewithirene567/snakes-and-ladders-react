@@ -52,3 +52,7 @@
   height: 80px;
   text-align: center;
 }
+
+.board {
+  table-layout:fixed;
+}

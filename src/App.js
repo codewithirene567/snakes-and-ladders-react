@@ -2,12 +2,28 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Board from './components/board';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './containers/Home'
+import Game from './containers/Game'
+import Result from './containers/Result'
+import PreviouslySavedGames from './containers/PreviouslySavedGames'
 
 //import rootReducer from './reducers/index'
+//home.js, import it, display it
 
 function App() {
+
   return (
     <div>
+      <Router>
+        {/* <Switch> // built in logic to say if the path is here */}
+    <Route path="/" component={Home}></Route>
+    <Route path="/result" component={Result}></Route>
+    <Route path="/game" component={Game}></Route>
+    <Route path="/previouslysavedgames" component={PreviouslySavedGames}></Route>
+    {/* </Switch> */}
+  </Router>
+
    <Board />
    
     <div className="App">
