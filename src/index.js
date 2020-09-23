@@ -4,14 +4,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import gameReducer from './reducers/gameReducer'
-import playerReducer from './reducers/playerReducer'
+
+import rootReducer from './reducers/index'
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(gameReducer, playerReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
+
 
 const Home = () => {
 return (
