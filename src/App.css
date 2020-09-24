@@ -52,7 +52,7 @@
   line-height: 80px;
   text-align: center;
   left: 50px;
-  top: -1000px;
+  top: -900px;
   position: relative;
    z-index: -1;
 }
@@ -251,5 +251,5 @@ h1 {
 .die-container{
   position: relative;
   left: 140px;
-  top: 760px;
+  top: 860px;
 }

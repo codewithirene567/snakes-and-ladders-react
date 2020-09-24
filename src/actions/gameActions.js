@@ -1,0 +1,1 @@
+export const createPlayer = playerInfoObject => ({type:"CREATE_PLAYER", payload: playerInfoObject})

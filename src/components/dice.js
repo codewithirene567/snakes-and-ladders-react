@@ -13,7 +13,7 @@ class Dice extends Component {
         return (
           <div>
             <ReactDice
-              numDice={2}
+              numDice={1}
               rollDone={this.rollDoneCallback}
               ref={dice => this.reactDice = dice}
             />
