@@ -54,7 +54,7 @@
   left: 50px;
   top: -1000px;
   position: relative;
-  /* z-index: 3; */
+   z-index: -1;
 }
 
 .board {
@@ -246,4 +246,10 @@ h1 {
 {
     table-layout: fixed;
     width: 900px;
+}
+
+.die-container{
+  position: relative;
+  left: 140px;
+  top: 760px;
 }
