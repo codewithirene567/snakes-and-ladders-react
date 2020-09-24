@@ -28,7 +28,7 @@ class Dice extends Component {
     render () {
         return (
             <div>
-                <h1>Click the dice to roll</h1>
+            
             <section className="container">
             <div id="cube" onClick={this.handleClick}>
                 <div className="front" id="1">

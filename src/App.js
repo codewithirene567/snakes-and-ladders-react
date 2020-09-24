@@ -16,7 +16,7 @@ function App() {
     <div>
       <Router>
         {/* <Switch> // built in logic to say if the path is here */}
-    <Route path="/" component={Home}></Route>
+    <Route path="/home" component={Home}></Route>
     <Route path="/result" component={Result}></Route>
     <Route path="/game" component={Game}></Route>
     <Route path="/previouslysavedgames" component={PreviouslySavedGames}></Route>

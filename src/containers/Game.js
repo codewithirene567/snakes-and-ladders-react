@@ -8,12 +8,12 @@ import Ladder from '../components/ladders'
 const Game = () => {
     return (
       <div>
+        <h1>Snakes and Ladders</h1>
         <Dice/>
         <Player />
         <Snake />
         <Ladder />
         <Board />
-        <h1>This is the game board</h1>
       </div>
     )
   }
