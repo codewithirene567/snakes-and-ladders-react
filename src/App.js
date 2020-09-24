@@ -9,7 +9,7 @@ import Result from './containers/Result'
 import PreviouslySavedGames from './containers/PreviouslySavedGames'
 
 //import rootReducer from './reducers/index'
-//home.js, import it, display it
+
 
 function App() {
 
