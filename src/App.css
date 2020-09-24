@@ -208,3 +208,7 @@ h1 {
   top: 100px;
 }
 
+
+#ladder-3{
+  transform: rotate(20deg);
+}
