@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Board from './components/board';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './containers/Home'
 import Game from './containers/Game'
