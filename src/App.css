@@ -212,3 +212,9 @@ h1 {
 #ladder-3{
   transform: rotate(20deg);
 }
+
+#matrix
+{
+    table-layout: fixed;
+    width: 900px;
+}
