@@ -48,9 +48,10 @@
   padding: 0;
   text-align: center;
   width: 80px;
-  line-height: 80px;
   height: 80px;
+  line-height: 80px;
   text-align: center;
+  /* z-index: 3; */
 }
 
 .board {
@@ -169,3 +170,16 @@ h1 {
 .bottom .dot4 { top: 125px; left: 45px; }
 .bottom .dot5 { top: 125px; left: 85px; }
 .bottom .dot6 { top: 125px; left: 125px; }
+
+
+#pawn{
+  background-image: url(https://www.iconfinder.com/data/icons/chess-26/128/2-512.png);
+  position: absolute;
+  left: 10px;
+  right: 300px;
+  top: 420px;
+  width: 20px;
+  height: 20px;
+  z-index: 0;
+}
+

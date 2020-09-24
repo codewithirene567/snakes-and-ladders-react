@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 
 class Dice extends Component {
 
-    
-    
     handleClick = () => {
         let cube = document.getElementById('cube');
 
@@ -25,42 +23,41 @@ class Dice extends Component {
     render () {
         return (
             <div>
-                hey
                 <h1>Click the dice to roll</h1>
-            <section class="container">
+            <section className="container">
             <div id="cube" onClick={this.handleClick}>
-                <div class="front">
-                <span class="dot dot1"></span>
+                <div className="front">
+                <span className="dot dot1"></span>
                 </div>
-                <div class="back">
-                <span class="dot dot1"></span>
-                <span class="dot dot2"></span>
+                <div className="back">
+                <span className="dot dot1"></span>
+                <span className="dot dot2"></span>
                 </div>
-                <div class="right">
-                <span class="dot dot1"></span>
-                <span class="dot dot2"></span>  
-                <span class="dot dot3"></span>
+                <div className="right">
+                <span className="dot dot1"></span>
+                <span className="dot dot2"></span>  
+                <span className="dot dot3"></span>
                 </div>
-                <div class="left">
-                <span class="dot dot1"></span>
-                <span class="dot dot2"></span>  
-                <span class="dot dot3"></span>
-                <span class="dot dot4"></span>
+                <div className="left">
+                <span className="dot dot1"></span>
+                <span className="dot dot2"></span>  
+                <span className="dot dot3"></span>
+                <span className="dot dot4"></span>
                 </div>
-                <div class="top">
-                <span class="dot dot1"></span>
-                <span class="dot dot2"></span>  
-                <span class="dot dot3"></span>
-                <span class="dot dot4"></span>
-                <span class="dot dot5"></span>
+                <div className="top">
+                <span className="dot dot1"></span>
+                <span className="dot dot2"></span>  
+                <span className="dot dot3"></span>
+                <span className="dot dot4"></span>
+                <span className="dot dot5"></span>
                 </div>
-                <div class="bottom">
-                <span class="dot dot1"></span>
-                <span class="dot dot2"></span>  
-                <span class="dot dot3"></span>
-                <span class="dot dot4"></span>
-                <span class="dot dot5"></span>
-                <span class="dot dot6"></span>
+                <div className="bottom">
+                <span className="dot dot1"></span>
+                <span className="dot dot2"></span>  
+                <span className="dot dot3"></span>
+                <span className="dot dot4"></span>
+                <span className="dot dot5"></span>
+                <span className="dot dot6"></span>
                 </div>
             </div>
             </section>
