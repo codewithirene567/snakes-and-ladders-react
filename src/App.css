@@ -183,3 +183,28 @@ h1 {
   z-index: 0;
 }
 
+#snake-1{
+  /* width: 230px;
+  height: 20px; */
+  position: absolute;
+  left: 190px;
+  top: 820px;
+  z-index: 3;
+}
+
+#snake-2{
+  /* width: 230px;
+  height: 20px; */
+  position: absolute;
+  left: 200px;
+  top: 200px;
+}
+
+#snake-3{
+  /* width: 230px;
+  height: 20px; */
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+
