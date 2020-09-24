@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class PlayerInfo extends Component {
 constructor(){
@@ -10,6 +11,11 @@ constructor(){
     }
 }
 
+addPlayer = (playerInfoObject) => ({
+    type: 'ADD_PLAYER',
+    payload: playerInfoObject
+})
+
 handleChange = (event) => {
     
     this.setState({
@@ -20,8 +26,10 @@ handleChange = (event) => {
   // this.setState({color: this.color})
 handleSubmit = (event) =>{
     event.preventDefault()
-     this.setState({name: this.name})
-     this.setState({color: this.color})
+    this.addPlayer({name: this.state.name, color: this.state.color, status: this.state.status})
+    console.log(this.state)
+    // this.setState({name: '', color:'',
+    // status:'lose'})
 }
 
 render () {
@@ -46,4 +54,9 @@ render () {
     )
 }
 }
-export default PlayerInfo
+
+const mapDispatchToProps = (state) => ({
+    players: state.players
+})
+
+export default connect(mapDispatchToProps, null) (PlayerInfo)
