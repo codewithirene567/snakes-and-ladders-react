@@ -20,7 +20,7 @@ class Board extends Component {
            ++matrixKey
          
         }
-            return <table CELLSPACING={0} id="matrix"><tbody >{matrix}</tbody></table>
+            return <table cellSpacing={0} id="matrix"><tbody >{matrix}</tbody></table>
      }
 
     render () {

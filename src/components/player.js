@@ -17,7 +17,7 @@ class Player extends Component {
         return (
  
                 <div className="pawn" id="pawn" >
-                    <img width="50" src="https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"></img>
+                    <img width="50" alt="pawn" src="https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"></img>
                 </div>
                 
             

@@ -187,8 +187,9 @@ h1 {
   /* width: 230px;
   height: 20px; */
   position: absolute;
-  left: 190px;
-  top: 820px;
+  left: 100px;
+  top: 1060px;
+  transform: rotate(180deg);
   z-index: 3;
 }
 
@@ -196,8 +197,8 @@ h1 {
   /* width: 230px;
   height: 20px; */
   position: absolute;
-  left: 200px;
-  top: 200px;
+  left: 100px;
+  top: 1080px;
 }
 
 #snake-3{

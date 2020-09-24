@@ -24,7 +24,7 @@ function App() {
     {/* </Switch> */}
   </Router>
 
-   <Board />
+   
    
     <div className="App">
       <header className="App-header">

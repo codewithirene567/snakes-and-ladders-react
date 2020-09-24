@@ -14,6 +14,7 @@ const Game = () => {
         <Ladder />
         <Board />
         <h1>This is the game board</h1>
+        <h1>test</h1>
       </div>
     )
   }

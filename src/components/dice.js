@@ -1,8 +1,13 @@
 //container component
 import React, { Component } from 'react';
 
-
+//https://codepen.io/paulina-cisek/pen/VwvEOaz
 class Dice extends Component {
+
+    state = {
+        side:''
+
+    } 
 
     handleClick = () => {
         let cube = document.getElementById('cube');
@@ -26,7 +31,7 @@ class Dice extends Component {
                 <h1>Click the dice to roll</h1>
             <section className="container">
             <div id="cube" onClick={this.handleClick}>
-                <div className="front">
+                <div className="front" id="1">
                 <span className="dot dot1"></span>
                 </div>
                 <div className="back">
@@ -44,7 +49,7 @@ class Dice extends Component {
                 <span className="dot dot3"></span>
                 <span className="dot dot4"></span>
                 </div>
-                <div className="top">
+                <div className="top" id="5">
                 <span className="dot dot1"></span>
                 <span className="dot dot2"></span>  
                 <span className="dot dot3"></span>
