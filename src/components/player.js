@@ -1,10 +1,13 @@
 //container component
+///https://www.youtube.com/watch?v=DqpPgK13oEM
+//https://github.com/sayjeyhi/snakeAndLadders/blob/master/src/components/Canvas/Player.js
 import React, { Component } from 'react';
 
 class Player extends Component {
     
     state = {
-        currentPostion: 0,
+        //currentPostion: {x:0, y:0},
+        // {left:`${x}`, right: `${y}`},
         name:'',
         status:'lose'
 
@@ -12,8 +15,7 @@ class Player extends Component {
 
     render () {
         return (
-            
-             
+ 
                 <div className="pawn" id="pawn" >
                     <img width="50" src="https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"></img>
                 </div>
