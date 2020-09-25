@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
+
 
 class PlayerInfo extends Component {
 constructor(){
@@ -11,10 +12,7 @@ constructor(){
     }
 }
 
-addPlayer = (playerInfoObject) => ({
-    type: 'ADD_PLAYER',
-    payload: playerInfoObject
-})
+
 
 handleChange = (event) => {
     
@@ -26,14 +24,21 @@ handleChange = (event) => {
   // this.setState({color: this.color})
 handleSubmit = (event) =>{
     event.preventDefault()
-    this.addPlayer({name: this.state.name, color: this.state.color, status: this.state.status})
+    this.props.addPlayer({name: this.state.name, color: this.state.color, status: this.state.status})
     console.log(this.state)
-    // this.setState({name: '', color:'',
-    // status:'lose'})
+    //   this.setState({name: '', color:'',
+    //   status:'lose'})
+    //   const playerInfoObject = {
+    //     name: this.state.name,
+    //     color: this.state.color
+    // }
+    // this.addPlayer(playerInfoObject)
 }
 
+
+
 render () {
-    console.log(this.handleChange)
+    //console.log(this.state.value)
     
     return (
         <div>
@@ -50,13 +55,22 @@ render () {
         </label>
         <input type="submit" value="Submit" />
         </form>
+        <p>{this.state.value}</p>
         </div>
     )
 }
 }
 
-const mapDispatchToProps = (state) => ({
-    players: state.players
-})
 
-export default connect(mapDispatchToProps, null) (PlayerInfo)
+
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addPlayer: (player) => dispatch({
+//             type: 'ADD_PLAYER',
+//             payload: player
+//         })
+//     }
+// }
+
+export default (PlayerInfo)

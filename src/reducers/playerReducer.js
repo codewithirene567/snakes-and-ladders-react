@@ -1,8 +1,10 @@
 
-function playerReducer(state = { players: []}, action){
+function playerReducer(state = [], action){
     switch (action.type) {
        case 'ADD_PLAYER':
-          return {...state, players: [...state.players, action.payload]};
+          return [...state, action.payload];
+        // case 'PLAYER_WON':
+        //   return {}
         default:
           return state;
     }
