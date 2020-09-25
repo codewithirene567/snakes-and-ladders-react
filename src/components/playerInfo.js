@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 class PlayerInfo extends Component {
+   
 constructor(){
     super();
+   this.variable = 0
     this.state ={
     name:'',
     color:'',
@@ -20,9 +22,12 @@ handleChange = (event) => {
  
 }
   // this.setState({color: this.color})
+  //from dice.js how can I access stuff in playerreducer.js for move forward
 handleSubmit = (event) =>{
     event.preventDefault()
-    this.props.addPlayer({name: this.state.name, color: this.state.color, status: "lose", currentPostion: 0})
+   //console.log(this.props)
+    this.props.addPlayer({name: this.state.name, color: this.state.color, status: "lose", currentPostion: 0, id: this.variable})
+   
     console.log(this.state)
        this.setState({name: '', color:'',
        })
@@ -31,6 +36,7 @@ handleSubmit = (event) =>{
     //     color: this.state.color
     // }
     // this.addPlayer(playerInfoObject)
+    this.variable ++
 }
 
 

@@ -4,7 +4,7 @@ import React from 'react';
 const PlayerCreated = (props) => {
  console.log(props.players) //props is currently rendering an empty {}
      if (props.players) {
-       return props.players.map(player => {
+       return props.players.allplayers.map(player => {
          return <div><li>{player.name}</li><br></br><li>{player.color}</li><br></br></div>
       })
     } else {

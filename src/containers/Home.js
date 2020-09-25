@@ -1,6 +1,6 @@
 import React from 'react';
 import PlayerInfo from '../components/playerInfo'
-import PlayerCreated from '../components/playerCreated';
+ import PlayerCreated from '../components/playerCreated';
 import { connect } from 'react-redux';
 import { addPlayer } from '../actions/gameActions';
 
@@ -14,7 +14,7 @@ const Home = (props) => {
       <div>
       <div>
         <h1>Welcome to Snakes and Ladders! Make some players by filling out your information below</h1><br></br>
-        <PlayerInfo addPlayer={props.addPlayer}/>
+        <PlayerInfo addPlayer={props.addPlayer} moveForward={props.moveForward}/>
       </div>
       <div>
         <PlayerCreated players={props.players} />

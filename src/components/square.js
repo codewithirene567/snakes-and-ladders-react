@@ -7,14 +7,14 @@ function Square(props) {
    //console.log(props)
       function conditionalPlayer1() {
          if (props.cellId == props.player1.currentPostion){
-              return <Player/>
+              return <Player src = "https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"/>
          }
         }
-        //  function conditionalPlayer2() {
-        //  if (props.cellId == props.player2.currentPostion){
-        //     return <Player/>
-        //  }
-        // }
+          function conditionalPlayer2() {
+          if (props.cellId == props.player2.currentPostion){
+             return <Player src = "https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"/>
+          }
+         }
         //  function conditionalPlayer3() {
         //      if (props.cellId == props.player3.currentPostion){
         //         return <Player/>
@@ -38,7 +38,7 @@ function Square(props) {
         <td className="square" id={props.cellId}>
             {props.cellId +1}
             {conditionalPlayer1()}
-            {/* {conditionalPlayer2()} */}
+            {conditionalPlayer2()}
         </td>
     )
 }
@@ -49,10 +49,10 @@ const mapStateToProps= (state) => ({
     //state from the store
     //anything you return from here is now a prop
     
-     player1: state.playerReducer[0],
-     player2: state.playerReducer[1],
-     player3: state.playerReducer[2],
-     player4: state.playerReducer[3]
+     player1: state.playerReducer.allplayers[0],
+     player2: state.playerReducer.allplayers[1],
+     player3: state.playerReducer.allplayers[2],
+     player4: state.playerReducer.allplayers[3]
 
 })
 
