@@ -6,12 +6,8 @@ import React, { Component } from 'react';
 
 class Player extends Component {
     
-    state = {
-        currentPostion: {x:0, y:0},
-        // {left:`${x}`, right: `${y}`},
-      
-    } 
-
+   
+//the display of the icon
     render () {
         return (
       

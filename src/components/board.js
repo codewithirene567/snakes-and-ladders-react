@@ -22,10 +22,13 @@ class Board extends Component {
         }
             return <table cellSpacing={0} id="matrix"><tbody >{matrix}</tbody></table>
      }
-
+     
     render () {
+        console.log(this.props)
         return (
+           
             <div>
+               
             <div className="row">
               {this.makeSquares()}
             </div>

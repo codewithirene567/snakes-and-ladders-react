@@ -4,6 +4,7 @@ import PlayerCreated from '../components/playerCreated';
 import { connect } from 'react-redux';
 import { addPlayer } from '../actions/gameActions';
 
+
 const Home = (props) => {
   
   //2
@@ -12,12 +13,13 @@ const Home = (props) => {
       
       <div>
       <div>
+        <h1>Welcome to Snakes and Ladders! Make some players by filling out your information below</h1><br></br>
         <PlayerInfo addPlayer={props.addPlayer}/>
-        <h1>This is the welcome page where they are going to be able to fill out their user information</h1>
       </div>
       <div>
         <PlayerCreated players={props.players} />
         </div>
+        <button onClick={()=>{props.history.push('/game')}}>Start</button>
         </div>
     )
     }

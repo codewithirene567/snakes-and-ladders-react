@@ -27,7 +27,7 @@ class Dice extends Component {
      
       rollDoneCallback= (num) => {
         this.setState({side: `${num}`})
-        debugger
+        //debugger
     }
     
 }

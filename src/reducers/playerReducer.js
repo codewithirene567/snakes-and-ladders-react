@@ -5,9 +5,11 @@ function playerReducer(state = [], action){
           return [...state, action.payload];
         // case 'PLAYER_WON':
         //   return {}
+        //player forward action next throguh this reducer
         default:
           return state;
     }
   };
 
   export default playerReducer;
+  //player object something that has which space they are on,

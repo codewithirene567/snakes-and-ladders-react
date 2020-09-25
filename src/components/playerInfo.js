@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-
-
 class PlayerInfo extends Component {
 constructor(){
     super();
     this.state ={
     name:'',
     color:'',
-    status:'lose'
+   
     }
 }
 
@@ -24,10 +22,10 @@ handleChange = (event) => {
   // this.setState({color: this.color})
 handleSubmit = (event) =>{
     event.preventDefault()
-    this.props.addPlayer({name: this.state.name, color: this.state.color, status: this.state.status})
+    this.props.addPlayer({name: this.state.name, color: this.state.color, status: "lose", currentPostion: 0})
     console.log(this.state)
-    //   this.setState({name: '', color:'',
-    //   status:'lose'})
+       this.setState({name: '', color:'',
+       })
     //   const playerInfoObject = {
     //     name: this.state.name,
     //     color: this.state.color
@@ -55,6 +53,7 @@ render () {
         </label>
         <input type="submit" value="Submit" />
         </form>
+        
         <p>{this.state.value}</p>
         </div>
     )
