@@ -9,12 +9,12 @@ class Board extends Component {
         
         let matrix = []
         let matrixKey = 0
-        let cellId = 0
+        let cellId = 99
         for(let i=0; i < 10; i++){
             const squares =[]
             for (let i=0; i < 10; i++) {
                 squares.push(<Square key={cellId} cellId={cellId}/>)
-                cellId++
+                cellId--
             }
             matrix.push(<tr key ={matrixKey}>{squares}</tr>)
            ++matrixKey
@@ -31,8 +31,11 @@ class Board extends Component {
                
             <div className="row">
               {this.makeSquares()}
+              
             </div>
+           
             </div>
+             
         );
     }
 }

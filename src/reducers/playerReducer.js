@@ -11,7 +11,7 @@ function playerReducer(state = intialState, action){
           return {...state,
             allplayers: state.allplayers.concat(action.payload)};
          case 'MOVE_FORWARD':
-          console.log(state)
+          console.log(action.payload)
            return {...state,
               allplayers: state.allplayers.map((p) => {
                   
@@ -20,7 +20,7 @@ function playerReducer(state = intialState, action){
 
                     return {
                       ...p,
-                      currentPostion: state.allplayers[state.currPlayer].currentPostion + 1
+                      currentPostion: state.allplayers[state.currPlayer].currentPostion + action.payload
                       //if currentPostion line && if the current player 0 !== current ++1
                     }
                   }
@@ -37,7 +37,38 @@ function playerReducer(state = intialState, action){
                  }
             // currentPostion: state.currentPosition +1}
         //player forward action next throguh this reducer
+        case 'JUMP':
+
+          return {...state,
+            allplayers: state.allplayers.map((p) => {
+                
+                if (p.id === state.currPlayer) {
+                  console.log(state, state.currPlayer)
+
+                  return {
+                    ...p,
+                    currentPostion: action.payload
+                    
+                  }
+                }
+                return p;
+              }),
+            }
+          // return {...state,
+          //   allplayers: state.allplayers.map((p) => {
+            
+          //   if (p.id === state.currPlayer) {
+          //   console.log(state, state.currPlayer)
         
+          //   return {
+          //     ...p,
+          //     currentPostion: action.payload
+          //     //if currentPostion line && if the current player 0 !== current ++1
+          //   }
+          // }
+
+          // }
+        //}
         default:
           return state;
     }
@@ -45,4 +76,6 @@ function playerReducer(state = intialState, action){
 
   export default playerReducer;
   //player object something that has which space they are on,
+
+  
  

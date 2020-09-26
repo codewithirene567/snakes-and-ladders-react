@@ -12,7 +12,7 @@ class Player extends Component {
         return (
       
                 <div className="pawn" id="pawn" >
-                    <img width="50" alt="pawn" src={props.src}></img>
+                    <img width="50" alt="pawn" src={this.props.link}></img>
                 </div>
                 
                

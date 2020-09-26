@@ -5,6 +5,7 @@ import 'react-dice-complete/dist/react-dice-complete.css'
 import { connect } from 'react-redux';
 import { moveForward } from '../actions/gameActions';
 import { changePlayer} from '../actions/gameActions';
+import { jump} from '../actions/gameActions';
 
 class Dice extends Component {
 
@@ -36,13 +37,48 @@ class Dice extends Component {
       //   }
 
       rollDoneCallback= (num) => {
-        //console.log("dice")
+
+        console.log(this.state)
+        //debugger
         // this.setState({side: `${num}`})
-        for (let i=0; i < num; i++) {
-        this.props.moveForward()
-        }
+
+        //for (let i=0; i < num; i++) {
+        this.props.moveForward(num)
+        //}
+        switch(this.props.players.allplayers[this.props.players.currPlayer].currentPostion){
+         case 74: {
+         this.props.jump(57)
+         break 
+         } 
+         case 71: {
+          this.props.jump(13)
+        break  
+        } 
+          case 35: {
+            this.props.jump(6)
+            break 
+            } 
+            case 53: {
+              this.props.jump(97)
+              break 
+              } 
+              case 28: {
+                this.props.jump(48)
+                break 
+                } 
+                case 14: {
+                  this.props.jump(44)
+                  break 
+                  } 
+                  default:
+                   
+            }
+//if currentPosition ===3 {jump to(47)...make a case statement 
+
         this.props.changePlayer()
         //debugger
+        //move backwards take in argument of one square to land on
+        
     }
     
 }
@@ -50,4 +86,4 @@ class Dice extends Component {
  const mapStateToProps = (state) => ({
    players: state.playerReducer
  })
-export default connect(mapStateToProps, {moveForward, changePlayer})(Dice)
+export default connect(mapStateToProps, {moveForward, changePlayer, jump})(Dice)
