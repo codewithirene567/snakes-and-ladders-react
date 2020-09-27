@@ -1,6 +1,7 @@
 
  const intialState = {
    currPlayer: 0,
+   winStatus: false,
    allplayers: []
 
  }
@@ -20,7 +21,7 @@ function playerReducer(state = intialState, action){
 
                     return {
                       ...p,
-                      currentPostion: state.allplayers[state.currPlayer].currentPostion + action.payload
+                      currentPostion: Math.min(state.allplayers[state.currPlayer].currentPostion + action.payload, 99)
                       //if currentPostion line && if the current player 0 !== current ++1
                     }
                   }
@@ -54,21 +55,7 @@ function playerReducer(state = intialState, action){
                 return p;
               }),
             }
-          // return {...state,
-          //   allplayers: state.allplayers.map((p) => {
-            
-          //   if (p.id === state.currPlayer) {
-          //   console.log(state, state.currPlayer)
-        
-          //   return {
-          //     ...p,
-          //     currentPostion: action.payload
-          //     //if currentPostion line && if the current player 0 !== current ++1
-          //   }
-          // }
-
-          // }
-        //}
+          
         default:
           return state;
     }

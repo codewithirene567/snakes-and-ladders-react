@@ -3,3 +3,4 @@ export const playerWon = playerInfoObject => ({type:"PLAYER_WON", payload: playe
 export const moveForward = playerInfoObject => ({type:"MOVE_FORWARD", payload: playerInfoObject})
 export const changePlayer = playerInfoObject => ({type: "CHANGE_PLAYER", payload: playerInfoObject})
 export const jump = (newPosition) => ({type:"JUMP", payload: newPosition})
+//export const won = (winnerNow)=> ({type:"WON", payload: winnerNow})

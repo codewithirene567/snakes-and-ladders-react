@@ -7,20 +7,12 @@ import { moveForward } from '../actions/gameActions';
 import { changePlayer} from '../actions/gameActions';
 import { jump} from '../actions/gameActions';
 
+
 class Dice extends Component {
 
-    // state = {
-    //     side:''
-    // } 
-//  hasItBeenRolledOnce = () => {
-//    debugger
-//    if (this.props.rollDone = true){
-//      {this.displayWinner()}
-//    }
-//  }
-
-
+    
     render() {
+      
         return (
           <div>
             <ReactDice
@@ -28,6 +20,7 @@ class Dice extends Component {
               rollDone={this.rollDoneCallback}
               ref={dice => this.reactDice = dice}
             />
+           
           </div>
         )
       }
@@ -36,15 +29,22 @@ class Dice extends Component {
         this.reactDice.rollAll()
       }
      
-      // for(let i=0; i < 10; i++){
-      //   const squares =[]
-      //   for (let i=0; i < 10; i++) {
-      //       squares.push(<Square key={cellId} cellId={cellId}/>)
-      //       cellId++
-      //   }
+      won() {
+      
+        console.log(this.props)
+        for(let i=0; i < this.props.players.allplayers.length; i++){
+           if (this.props.players.allplayers[i].currentPostion >= 99){
+             alert(this.props.players.allplayers[i].name + " has won!")
+             this.props.players.winStatus = true;
+           
+          
+           }
+        }
+      }
+     
 
       rollDoneCallback= (num) => {
-        //this.hasItBeenRolledOnce()
+       
         console.log(this.state)
         //debugger
         // this.setState({side: `${num}`})
@@ -81,8 +81,9 @@ class Dice extends Component {
                    
             }
 //if currentPosition ===3 {jump to(47)...make a case statement 
-
+        this.won()
         this.props.changePlayer()
+
         //debugger
         //move backwards take in argument of one square to land on
         
@@ -98,3 +99,4 @@ class Dice extends Component {
  
  
 export default connect(mapStateToProps, {moveForward, changePlayer, jump})(Dice)
+// export default withRouter(Dice)

@@ -7,4 +7,5 @@ const PreviouslySavedGames = () => {
       </div>
     )
   }
+  
   export default PreviouslySavedGames

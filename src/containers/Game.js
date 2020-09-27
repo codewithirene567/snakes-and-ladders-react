@@ -5,6 +5,7 @@ import Board from '../components/board'
 import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const Game = (props) => {
   
@@ -15,14 +16,21 @@ const Game = (props) => {
         <Dice/>
         <Ladder />
         <Board />
+        {checkWin(props)}
         
-       
       </div>
     )
   }
   //pass in props of all players
   //find the position
+function checkWin(props){
+  {if (props.winStatus === true){ 
+        return <Redirect to="/result" />
+        }
+      }
+    }
   const mapStateToProps = (state) => {
+
      //console.log(state.playerReducer)
      let array=[]
      let highestName = ''
@@ -42,7 +50,7 @@ const Game = (props) => {
       }
       
     }
-    return {winner:'Player '+highestName+' is winning!'}
+    return {winner:'Player '+highestName+' is winning!', winStatus: state.playerReducer.winStatus}
     
 }
    export default connect(mapStateToProps, null)(Game);
