@@ -33,7 +33,7 @@ class Dice extends Component {
       
         
         for(let i=0; i < this.props.players.allplayers.length; i++){
-           if (this.props.players.allplayers[i].currentPostion >= 0){
+           if (this.props.players.allplayers[i].currentPostion >= 99){
              alert(this.props.players.allplayers[i].name + " has won!")
              this.props.players.winStatus = true;
           

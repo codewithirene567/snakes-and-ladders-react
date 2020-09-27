@@ -20,6 +20,8 @@ const Home = (props) => {
         <PlayerCreated players={props.players} />
         </div>
         <button onClick={()=>{props.history.push('/game')}}>Start</button>
+        <p>Already have a game started? Click the button below to play a previously saved game.</p>
+        <button>Load Saved Game</button>
         </div>
     )
     }

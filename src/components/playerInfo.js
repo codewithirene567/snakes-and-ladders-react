@@ -26,7 +26,7 @@ handleChange = (event) => {
 handleSubmit = (event) =>{
     event.preventDefault()
    //console.log(this.props)
-    this.props.addPlayer({name: this.state.name, color: this.state.color, status: "lose", currentPostion: 0, id: this.variable})
+    this.props.addPlayer({name: this.state.name, currentPostion: 0, id: this.variable})
    
     console.log(this.state)
        this.setState({name: '', color:'',
@@ -53,11 +53,8 @@ render () {
         </label>
         <br></br>
         <br></br>
-        <label>
-            Color:
-            <input type="text" name="color" value={this.state.color} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+        
+        <input type="submit" value="Save Player" />
         </form>
         
         <p>{this.state.value}</p>
