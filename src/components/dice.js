@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { moveForward } from '../actions/gameActions';
 import { changePlayer} from '../actions/gameActions';
 import { jump} from '../actions/gameActions';
-
+//import {Link, RichText, Date} from 'prismic-reactjs';
 
 class Dice extends Component {
 
@@ -31,15 +31,28 @@ class Dice extends Component {
      
       won() {
       
-        console.log(this.props)
+        
         for(let i=0; i < this.props.players.allplayers.length; i++){
-           if (this.props.players.allplayers[i].currentPostion >= 99){
+           if (this.props.players.allplayers[i].currentPostion >= 0){
              alert(this.props.players.allplayers[i].name + " has won!")
              this.props.players.winStatus = true;
-           
           
+             this.props.players.winnerName = this.props.players.allplayers[i].name
+             const timestamp = Math.floor(Date.now()/1000)
+             this.props.players.timeStamp = Intl.DateTimeFormat('en-US',{
+              year: "numeric",
+              month: "short",
+              day: "2-digit",
+              hour: "numeric",
+              minute: "2-digit",
+              second: "2-digit"
+            }).format(timestamp);
+            
+             //timestamp logic change of state
+            // console.log(this.props.players.allplayers[i].name)
            }
         }
+       
       }
      
 

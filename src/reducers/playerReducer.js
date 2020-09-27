@@ -2,8 +2,9 @@
  const intialState = {
    currPlayer: 0,
    winStatus: false,
-   allplayers: []
-
+   allplayers: [],
+   winnerName: "",
+   timeStamp: ""
  }
 
 function playerReducer(state = intialState, action){
