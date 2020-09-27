@@ -11,7 +11,7 @@ class Player extends Component {
     render (props) {
         return (
       
-                <div className="pawn" id="pawn" >
+                <div className="pawn" id={this.props.id} >
                     <img width="50" alt="pawn" src={this.props.link}></img>
                 </div>
                 

@@ -151,7 +151,7 @@ h1 {
   z-index: 5;
 } */
 
-#pawn.pawn{
+.pawn{
   position: absolute;
    left: 30px;
   /* right: 300px; */
@@ -160,7 +160,9 @@ h1 {
   height: 40px;
   z-index: 3;
 }
-/* need pawn to be relative to the square it is inside of  */
+
+
+
 
 #snake-1{
   /* width: 230px;
