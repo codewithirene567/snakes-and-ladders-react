@@ -10,7 +10,7 @@ const Game = (props) => {
   
     return (
       <div>
-        <h1>Snakes and Ladders - Player {props.winner} is winning!</h1>
+        <h1>Snakes and Ladders - {props.winner}</h1>
         <Snake />
         <Dice/>
         <Ladder />
@@ -42,7 +42,7 @@ const Game = (props) => {
       }
       
     }
-    return {winner:highestName}
+    return {winner:'Player '+highestName+' is winning!'}
     
 }
    export default connect(mapStateToProps, null)(Game);

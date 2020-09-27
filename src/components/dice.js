@@ -12,7 +12,14 @@ class Dice extends Component {
     // state = {
     //     side:''
     // } 
- 
+//  hasItBeenRolledOnce = () => {
+//    debugger
+//    if (this.props.rollDone = true){
+//      {this.displayWinner()}
+//    }
+//  }
+
+
     render() {
         return (
           <div>
@@ -37,7 +44,7 @@ class Dice extends Component {
       //   }
 
       rollDoneCallback= (num) => {
-
+        //this.hasItBeenRolledOnce()
         console.log(this.state)
         //debugger
         // this.setState({side: `${num}`})
@@ -82,8 +89,12 @@ class Dice extends Component {
     }
     
 }
-    
+    //players: state.playerReducer,
  const mapStateToProps = (state) => ({
-   players: state.playerReducer
+  players: state.playerReducer
+  
  })
+
+ 
+ 
 export default connect(mapStateToProps, {moveForward, changePlayer, jump})(Dice)
