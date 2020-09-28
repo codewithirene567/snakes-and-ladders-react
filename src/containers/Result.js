@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 const Result = (props) => {
  
+ 
     return (
       <div>
         <h1>Here are the results of the game you just played</h1>
         <p>{props.winnerName} is the winner</p>
         <p>{props.timeStamp}</p>
+        
       </div>
       
     )
@@ -24,6 +26,8 @@ const Result = (props) => {
       
         
     }
+
+   
 
     export default connect(mapStateToProps, null)(Result)
  

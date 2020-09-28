@@ -5,6 +5,7 @@
    allplayers: [],
    winnerName: "",
    timeStamp: ""
+
  }
 
 function playerReducer(state = intialState, action){

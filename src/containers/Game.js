@@ -6,9 +6,19 @@ import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { saveGame } from '../actions/gameActions';
 
 const Game = (props) => {
   
+  function startSavingGame(event){
+    console.log("working")
+     console.log(props.game)
+     //event.preventDefault();
+    props.saveGame(props.game)
+    
+    
+  }
+
     return (
       <div>
         <h1>Snakes and Ladders - {props.winner}</h1>
@@ -17,6 +27,7 @@ const Game = (props) => {
         <Ladder />
         <Board />
         {checkWin(props)}
+       <button id="save" onClick = {(event)=> startSavingGame(event)}>Save this game</button>
         
       </div>
     )
@@ -31,7 +42,7 @@ function checkWin(props){
     }
   const mapStateToProps = (state) => {
 
-     //console.log(state.playerReducer)
+     console.log(state.playerReducer.allplayers)
      let array=[]
      let highestName = ''
     for(let i=0; i < state.playerReducer.allplayers.length; i++){
@@ -50,7 +61,13 @@ function checkWin(props){
       }
       
     }
-    return {winner:'Player '+highestName+' is winning!', winStatus: state.playerReducer.winStatus}
+    return {winner:'Player '+highestName+' is winning!', winStatus: state.playerReducer.winStatus, game:state.playerReducer}
     
 }
-   export default connect(mapStateToProps, null)(Game);
+
+
+
+//  const mapDispatchToProps = (dispatch) => {
+//    return {saveGame: () => dispatch(saveGame())}
+//  }
+   export default connect(mapStateToProps, {saveGame})(Game);
