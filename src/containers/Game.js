@@ -6,17 +6,20 @@ import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { saveGame } from '../actions/gameActions';
+import { saveGame, savePlayers } from '../actions/gameActions';
+
 
 const Game = (props) => {
-  
+ 
   function startSavingGame(event){
-    console.log("working")
-     console.log(props.game)
-     //event.preventDefault();
-    props.saveGame(props.game)
-    
-    
+    console.log("hit")
+     let currentTimeStamp = Math.floor(Date.now()/1000)
+    props.saveGame(props.game, currentTimeStamp)
+     for(let i=0; i < props.game.allplayers.length; i++){ 
+     
+     props.savePlayers(props.game.allplayers[i], currentTimeStamp)
+  
+   }
   }
 
     return (
@@ -70,4 +73,4 @@ function checkWin(props){
 //  const mapDispatchToProps = (dispatch) => {
 //    return {saveGame: () => dispatch(saveGame())}
 //  }
-   export default connect(mapStateToProps, {saveGame})(Game);
+   export default connect(mapStateToProps, {saveGame, savePlayers})(Game);

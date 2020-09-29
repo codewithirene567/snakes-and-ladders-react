@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios'
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -12,7 +12,7 @@ import rootReducer from './reducers/index'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import playerReducer from './reducers/playerReducer';
+
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 

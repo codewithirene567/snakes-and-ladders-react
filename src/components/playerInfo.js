@@ -26,7 +26,7 @@ handleChange = (event) => {
 handleSubmit = (event) =>{
     event.preventDefault()
    //console.log(this.props)
-    this.props.addPlayer({name: this.state.name, currentPostion: 0, id: this.variable})
+    this.props.addPlayer({name: this.state.name, currentPostion: 0, playerId: this.variable})
    
     console.log(this.state)
        this.setState({name: '', color:'',

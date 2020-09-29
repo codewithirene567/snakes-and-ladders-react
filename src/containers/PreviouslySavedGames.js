@@ -1,17 +1,68 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getGame, getPlayers } from '../actions/gameActions';
+import ListOfNewGames from '../components/listOfNewGames';
 
-const PreviouslySavedGames = () => {
 
-  // function grabGame(event){
-  //   getGame()
-  // }
+class PreviouslySavedGames extends React.Component {
+  
+    grabGame(event){
+  //      let game = props.getGame()
+  //      let players = props.getPlayers()
+       console.log(this.props.game)
+       console.log(this.props.player)
+       console.log("grabGame")
+       
 
-    return (
+    }
+
+    grabGAMES(){
+      //console.log(this.props.game)
+      let arrayOfGames = []
+      let gamesInArray = this.props.game
+      arrayOfGames.push(gamesInArray)
+    //  let game = this.props.game
+    //  return game
+    return arrayOfGames.toString()
+    }
+
+    grabPLAYERS(){
+       let player1 = this.props.player
+       let array = []
+       array.push(player1)
+       return array.toString()
+    }
+   componentDidMount() {
+    console.log("run component did mount ")
+    this.props.getGame()
+    this.props.getPlayers()
+    
+}
+
+    render () {
+      console.log(this.props.player)
+      return(
       <div>
         <h1>List of Previously Saved Games</h1>
-        {/* <button onClick = {(event)=> grabGame(event)}>Game timestamp Click here to start your previous game</button> */}
+        <div >
+          <div>
+          < ListOfNewGames 
+       players={this.props.player} games={this.props.game} />
+          </div>
+        </div> 
+        
+        
+
       </div>
-    )
+      )
   }
 
-  export default PreviouslySavedGames
+   
+
+}
+const mapStateToProps = (state) => ({
+   //console.log(state.gameReducer)
+  game: state.gameReducer,
+   player: state.playerReducer.allplayers
+})
+  export default connect(mapStateToProps, {getGame, getPlayers} )(PreviouslySavedGames)

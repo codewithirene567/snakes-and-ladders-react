@@ -7,19 +7,19 @@
    timeStamp: ""
 
  }
-
+//the reducer that works while the game is in play
 function playerReducer(state = intialState, action){
     switch (action.type) {
        case 'ADD_PLAYER':
           return {...state,
             allplayers: state.allplayers.concat(action.payload)};
          case 'MOVE_FORWARD':
-          console.log(action.payload)
+          console.log(action.payload, state)
            return {...state,
               allplayers: state.allplayers.map((p) => {
                   
-                  if (p.id === state.currPlayer) {
-                    console.log(state, state.currPlayer)
+                  if (p.playerId === state.currPlayer) {
+                    console.log(state.allplayers[state.currPlayer].currentPostion + action.payload)
 
                     return {
                       ...p,
@@ -57,9 +57,11 @@ function playerReducer(state = intialState, action){
                 return p;
               }),
             }
-          
+          case 'GET_THE_PLAYERS':
+            console.log(state.allplayers)
+            return {...state, allplayers: action.payload}
         default:
-          return state;
+          return state
     }
   };
 

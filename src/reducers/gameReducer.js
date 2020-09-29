@@ -1,20 +1,23 @@
+const intialState = {
+  currPlayer: 0,
+  winStatus: false,
+  allplayers: [],
+  winnerName: "",
+  timeStamp: ""
 
-const gameReducer = (state = { game: []}, action) => {
+}
+
+
+
+function gameReducer(state = intialState, action) {
     switch (action.type) {
-   
-    //   case '':
-    //     return {
-    //       ...state,
-    //       game: [...state.game],
-    //       requesting: true
-    //     }
-   
-    //   case 'ADD_game':
-    //     return {
-    //       ...state,
-    //       game: action.game,
-    //       requesting: false
-    //     }
+      case 'GET_THE_GAME':
+        console.log(action.payload)
+        console.log(state)
+       // console.log(action.payload)
+        return action.payload
+        
+    
    
       default:
         return state;

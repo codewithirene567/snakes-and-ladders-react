@@ -1,6 +1,3 @@
-import axios from 'axios'
-
-
 export const addPlayer = playerInfoObject => ({type:"ADD_PLAYER", payload: playerInfoObject})
 export const playerWon = playerInfoObject => ({type:"PLAYER_WON", payload: playerInfoObject})
 export const moveForward = playerInfoObject => ({type:"MOVE_FORWARD", payload: playerInfoObject})
@@ -8,9 +5,12 @@ export const changePlayer = playerInfoObject => ({type: "CHANGE_PLAYER", payload
 export const jump = (newPosition) => ({type:"JUMP", payload: newPosition})
 //export const won = (winnerNow)=> ({type:"WON", payload: winnerNow})
 export const startSaveGameRequest = (gameInfo) => ({type:'START_SAVE_GAME_REQUEST', payload: gameInfo})
+export const startSavePlayerRequest = (gameInfo) => ({type:'START_SAVE_PLAYER_REQUEST', payload: gameInfo})
 
-export const saveGame = (game) =>{
+
+export const saveGame = (game, currentTimeStamp) =>{
     console.log(game)
+    game.timeStamp = currentTimeStamp
     return ( dispatch) => {
         const configObj ={
             method: 'POST',
@@ -20,24 +20,56 @@ export const saveGame = (game) =>{
         },
         body: JSON.stringify(game)
         }
-         fetch('http://127.0.0.1:3000/game', configObj)    
+         fetch('http://127.0.0.1:3000/game', configObj) 
          .then(response => response.json())
          .then(data => {
+            //dispatch(() => {savePlayers(player, currentTimeStamp)})
             dispatch({type:'START_SAVE_GAME_REQUEST', payload: data})
+
           })
         }  
 }
 
+export const savePlayers = (player, currentTimeStamp) =>{
+   
+    player.timeStamp = currentTimeStamp
+    console.log("called", player)
+    return ( dispatch) => {
+        const configObj ={
+            method: 'POST',
+            headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+           
+        },
+        body: JSON.stringify(player)
+        }
+         fetch('http://127.0.0.1:3000/player', configObj)    
+         .then(response => response.json())
+         .then(data => {
+            dispatch({type:'START_SAVE_PLAYER_REQUEST', payload: data})
+          })
+    }  
+}
+
 export const getGame = () =>{
+   
     return (dispatch) => {
-        dispatch({type: 'GET_THE_GAME'})
-        fetch('http://127.0.0.1:3000/game')
-        .then(response=>{
-            return response.json()
-        })
+        fetch(`http://127.0.0.1:3000/game`)
+        .then(response => response.json())
+        .then(data => dispatch({type: 'GET_THE_GAME', payload:data}))
+      }
+}
+
+export const getPlayers = () =>{
+    return (dispatch) => {
+        fetch(`http://127.0.0.1:3000/player`)
+        .then(response => response.json())
+        .then(data => dispatch({type: 'GET_THE_PLAYERS', payload:data}))
+      }
        
     }
-}
+
         
 // .then(data => {
 //     dispatch(({type: 'START_SAVE_GAME_REQUEST', payload: data})
