@@ -15,9 +15,13 @@ function gameReducer(state = intialState, action) {
         console.log(action.payload)
         console.log(state)
        // console.log(action.payload)
-        return action.payload
+        return state = action.payload
         
-    
+      case 'GET_ONE_GAME':
+        console.log(action.payload)
+        console.log(state);
+
+        return state = action.payload;
    
       default:
         return state;

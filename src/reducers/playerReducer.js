@@ -58,8 +58,19 @@ function playerReducer(state = intialState, action){
               }),
             }
           case 'GET_THE_PLAYERS':
-            console.log(state.allplayers)
+            console.log(state.allplayers, action.payload)
             return {...state, allplayers: action.payload}
+            //empty array
+          case 'GET_FIRST_PLAYER':
+            console.log(action.payload);
+            return {...state, allplayers: Array.from([action.payload])}
+          case 'GET_THE_PLAYER_ONEBYONE':
+            console.log(action.payload);
+            return {...state,
+              allplayers: state.allplayers.concat(action.payload)};
+              //reducer actions are adding the right players to the array with concat
+              case 'SET_PLAYER':
+                return {...state, allplayers: action.payload}
         default:
           return state
     }

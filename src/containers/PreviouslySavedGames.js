@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getGame, getPlayers } from '../actions/gameActions';
+import { getAllGame, getPlayers } from '../actions/gameActions';
 import ListOfNewGames from '../components/listOfNewGames';
 
 
@@ -34,7 +34,7 @@ class PreviouslySavedGames extends React.Component {
     }
    componentDidMount() {
     console.log("run component did mount ")
-    this.props.getGame()
+    this.props.getAllGame()
     this.props.getPlayers()
     
 }
@@ -61,8 +61,8 @@ class PreviouslySavedGames extends React.Component {
 
 }
 const mapStateToProps = (state) => ({
-   //console.log(state.gameReducer)
-  game: state.gameReducer,
+  //  console.log(state)
+   game: state.gameReducer,
    player: state.playerReducer.allplayers
 })
-  export default connect(mapStateToProps, {getGame, getPlayers} )(PreviouslySavedGames)
+  export default connect(mapStateToProps, { getAllGame,getPlayers} )(PreviouslySavedGames)
