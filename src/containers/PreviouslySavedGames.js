@@ -40,14 +40,14 @@ class PreviouslySavedGames extends React.Component {
 }
 
     render () {
-      console.log(this.props.player)
+      console.log(this.props.game)
       return(
       <div>
         <h1>List of Previously Saved Games</h1>
         <div >
           <div>
           < ListOfNewGames 
-       players={this.props.player} games={this.props.game} />
+       players={this.props.game} games={this.props.game} />
           </div>
         </div> 
         
@@ -60,9 +60,9 @@ class PreviouslySavedGames extends React.Component {
    
 
 }
-const mapStateToProps = (state) => ({
-  //  console.log(state)
-   game: state.gameReducer,
-   player: state.playerReducer.allplayers
-})
+const mapStateToProps = (state) => {
+   console.log(state)
+   return {game: state.gameReducer,
+   player: state.gameReducer.allplayers}
+}
   export default connect(mapStateToProps, { getAllGame,getPlayers} )(PreviouslySavedGames)

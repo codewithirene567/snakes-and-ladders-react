@@ -19,8 +19,17 @@ function gameReducer(state = intialState, action) {
         console.log(action.payload)
         console.log(state)
        // console.log(action.payload)
+        return action.payload.map((p) => {
+            p['allplayers'] = [];
+            return {
+              ...p
+            }
+          })
+        //made an empty array for allplayers
+
         return state = action.payload ;
-        
+      // case 'GET_INITIAL_GAME':
+      //   return state = intialState;
         // return {
         //   ...state,
         //   id: action.payload.id,
@@ -41,10 +50,40 @@ function gameReducer(state = intialState, action) {
         return {...state , 
     
           saved: true}
-          
+      case 'GET_THE_PLAYERS':
+        console.log(state, action.payload)
+        if (state.constructor === Array ) { 
+        return state.map((game) => {
+          game['allplayers'] = action.payload;
+          console.log(game, game.allplayers)
+          return {
+            ...game,
+            // allplayers: action.payload
+          }
+        })
+        } else {
+          return {
+            ...state,
+            allplayers: action.payload
+          }
+        }
+        // return {...state, allplayers: action.payload}
       default:
         return state;
     }
   };
 
   export default gameReducer;
+
+  // {...state,
+  //   allplayers: state.allplayers.map((p) => {
+        
+  //       if (p.playerId === state.currPlayer) {
+  //         console.log(state.allplayers[state.currPlayer].currentPostion + action.payload)
+
+  //         return {
+  //           ...p,
+  //           currentPostion: Math.min(state.allplayers[state.currPlayer].currentPostion + action.payload, 99)
+  //           //if currentPostion line && if the current player 0 !== current ++1
+  //         }
+  //       }

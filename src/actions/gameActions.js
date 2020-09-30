@@ -8,9 +8,9 @@ export const jump = (newPosition) => ({type:"JUMP", payload: newPosition})
 // export const startSavePlayerRequest = (gameInfo) => ({type:'START_SAVE_PLAYER_REQUEST', payload: gameInfo})
 export const setPlayers = players => ({type:"SET_PLAYER", payload: players})
 
-export const saveGame = (game, currentTimeStamp) =>{
+export const saveGame = (game) =>{
     console.log(game)
-    game.timeStamp = currentTimeStamp
+    // game.timeStamp = currentTimeStamp
     return ( dispatch) => {
         const configObj ={
             method: 'POST',
@@ -51,6 +51,8 @@ export const savePlayers = (player, currentTimeStamp) =>{
           })
     }  
 }
+
+
 
 export const getGame = (gameId) =>{
    
@@ -97,9 +99,9 @@ export const getPlayers = () =>{
            
         }
         //--------------------------------
-        export const updateGame = (game, currentTimeStamp) =>{
+        export const updateGame = (game) =>{
    
-            game.timeStamp = currentTimeStamp
+            //game.timeStamp = currentTimeStamp
             let id = game.id
             return ( dispatch) => {
                 const configObj ={
@@ -111,7 +113,7 @@ export const getPlayers = () =>{
                 },
                 body: JSON.stringify(game)
                 }
-                 fetch(`http://127.0.0.1:3000/game/${id}`, configObj)    
+                 fetch('http://127.0.0.1:3000/game/'+id, configObj)    
                  .then(response => response.json())
                  .then(data => {
                     dispatch({type:'UPDATE_GAME', payload: data})
@@ -131,7 +133,7 @@ export const getPlayers = () =>{
                 },
                 body: JSON.stringify(player)
                 }
-                 fetch(`http://127.0.0.1:3000/player${id}`, configObj)    
+                 fetch('http://127.0.0.1:3000/player/'+id, configObj)    
                  .then(response => response.json())
                  .then(data => {
                     dispatch({type:'UPDATE_PLAYERS', payload: data})

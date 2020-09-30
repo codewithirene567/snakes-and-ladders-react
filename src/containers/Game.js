@@ -6,7 +6,7 @@ import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame } from '../actions/gameActions';
+import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayers, setPlayers } from '../actions/gameActions';
 import listOfNewGames from '../components/listOfNewGames';
 
 
@@ -18,41 +18,122 @@ import listOfNewGames from '../components/listOfNewGames';
 
   }
 
+
     startSavingGame(event){
        console.log(this.props)
       // console.log(this.props.getAllGame().length)
-       this.props.getAllGame()
-      //  console.log(this.props)
-      console.log(this.savedOnce)
-// let games = this.props.gameState.length
-// if (games >this.props.gameState.id)
-      //id exists from the backend
-      //notes: add a like button, previous save games list
-      //understand plain react
-    console.log("hit")
-     let currentTimeStamp = Math.floor(Date.now()/1000)
-     console.log(this.props.gameState)
-    this.props.saveGame(this.props.game, currentTimeStamp)
-     for(let i=0; i < this.props.game.allplayers.length; i++){ 
-     //if the player already has an id then send a patch requests
-     //update players patch
-     //update games patch
-      this.props.savePlayers(this.props.game.allplayers[i], currentTimeStamp)
-      //console.log(props.game.allplayers[i])
-      // reset state here, redirect to home
-      
+      console.log("Reading Games here");
+      this.props.getPlayers()
+        console.log(this.props.gameState);
+        console.log(this.props.history.location.state.localGame);
+        //  this.props.history.location.state.IdOfGame
+      //  this.props.history.location.state.fromWhere ???
+        // console.log(this.props.state);
+        const newGame = {
+          id: this.props.history.location.state.localGame.id,
+          currPlayer: this.props.game.currPlayer,
+          winStatus: this.props.game.winStatus,
+          winnerName: this.props.game.winnerName,
+          timeStamp: this.props.history.location.state.localGame.timeStamp
+        }
+        this.props.updateGame(newGame)
+
+
+        console.log(this.props.gameState);
+
+        if (this.props.history.location.state.localplayers == []) {
+        let j = 0;
+        for(let i =0; i < this.props.history.location.state.localGame.allplayers.length; i++) {
+          console.log(newGame.timeStamp, this.props.history.location.state.localGame.allplayers[i].timeStamp)
+          if (newGame.timeStamp === this.props.history.location.state.localGame.allplayers[i].timeStamp) {
+            console.log(this.props.state.playerReducer.allplayers)
+            const newPlayer = {
+              id: this.props.history.location.state.localGame.allplayers[i].id,
+              name: this.props.history.location.state.localGame.allplayers[i].name,
+              currentPostion: this.props.state.playerReducer.allplayers[j].currentPostion,
+              timeStamp: this.props.history.location.state.localGame.allplayers[i].timeStamp,
+              playerId: this.props.history.location.state.localGame.allplayers[i].playerId
+            }
+            this.props.updatePlayers(newPlayer)
+            j++;
+          }
+        }
+      } else {
+        for(let i =0; i < this.props.history.location.state.localPlayers.length; i++) {
+            console.log(this.props.history.location.state.localGame.allplayers.length + i,this.props.state.playerReducer.allplayers[i].currentPostion);
+          const newPlayer = {
+            id: this.props.history.location.state.localGame.allplayers.length + i,
+            name: this.props.history.location.state.localPlayers[i].name,
+            currentPostion: this.props.state.playerReducer.allplayers[i].currentPostion,
+            timeStamp: this.props.history.location.state.localPlayers[i].timeStamp,
+            playerId: this.props.history.location.state.localPlayers[i].playerId
+          }
+          this.props.updatePlayers(newPlayer)
+        }
       }
-      this.savedOnce = true;
-      console.log(this.props.gameState);
+
+
+        // for(let i = 0; i < this.props.state.playerReducer.allplayers.length; i++) {
+        //   // const currentplayer = this.props.state.playerReducer.allplayers[i]
+          
+        //   console.log(this.props.state.playerReducer.allplayers[i]);
+        //   this.props.updatePlayers(this.props.state.playerReducer.allplayers[i]);
+        // }
+        //   for(let i=0; i < this.props.game.allplayers.length; i++) {
+            
+        //    if (this.props.game.allplayers[i].timeStamp === newGame.timeStamp){
+        //     const newPlayer = {
+        //       id: this.props.game.id,
+        //       name: this.props.game.currPlayer,
+        //       currentPostion: this.props.game.winStatus,
+        //       timeStamp: this.props.game.winnerName,
+        //       playerId: this.props.game.playerId
+        //     }
+    
+        //     this.props.updatePlayers()
+        //    }
+        //  }
+        
+       // this.updatePlayers()
+// let games = this.props.gameState.length
+     
+          //id exists from the backend
+ 
+    // this.props.saveGame(this.props.game, currentTimeStamp)
+    //  for(let i=0; i < this.props.game.allplayers.length; i++){ 
+    //  //if the player already has an id then send a patch requests
+    //  //update players patch
+    //  //update games patch
+    //   this.props.savePlayers(this.props.game.allplayers[i], currentTimeStamp)
+    //   //console.log(props.game.allplayers[i])
+    //   // reset state here, redirect to home
+      
+    //   }
+     
+      
   }
-  // saving game again object: {id: 4, currPlayer: 0, winStatus: false, winnerName: "", timeStamp: 1601401153}
-// currPlayer: 0
-// id: 4
-// timeStamp: 1601401153
-// winStatus: false
-// winnerName: ""
+  
+// componentDidMount() {
+
+//   this.props.getPlayers()
+// }
 
 render () {
+
+    // if (this.props.history.location.state.fromWhere === 'old') {
+    //   console.log(this.props.history.location.state.InGamePlayer);
+    //   this.props.setPlayers(this.props.history.location.state.InGamePlayer)
+    // }
+    
+  // let array = this.props.players.filter((player)=>{
+  //   return currentTimeStamp ===player.timeStamp
+  // })
+  //   console.log(array)
+  //   //make a new action to return a new array with all players inside
+  //   //debugger
+  //   this.props.setPlayers(array)
+
+  console.log(this.props)
     return (
       <div>
         <h1>Snakes and Ladders - {this.props.winner}</h1>
@@ -62,7 +143,7 @@ render () {
         <Board />
         {this.checkWin(this.props)}
        <button id="save" onClick = {(event)=> this.startSavingGame(event)}>Save this game</button>
-        
+       
       </div>
     )
   }
@@ -81,6 +162,8 @@ checkWin(props){
      console.log(state)
      let array=[]
      let highestName = ''
+
+
     for(let i=0; i < state.playerReducer.allplayers.length; i++){
       console.log(state.playerReducer);
       //my all players is equalling null because this is empty
@@ -105,4 +188,4 @@ checkWin(props){
 //  const mapDispatchToProps = (dispatch) => {
 //    return {saveGame: () => dispatch(saveGame())}
 //  }
-   export default connect(mapStateToProps, {saveGame,getAllGame, savePlayers, updatePlayers, updateGame})(Game);
+   export default connect(mapStateToProps, {saveGame,getAllGame, savePlayers, updatePlayers, updateGame, getPlayers, setPlayers})(Game);

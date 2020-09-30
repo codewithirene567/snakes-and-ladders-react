@@ -14,14 +14,14 @@ import { connect } from 'react-redux';
       //window.history.push('/game')
       //this.setState()
 
-      this.props.getGame(gameId)
+      //this.props.getGame(gameId)
     //   this.props.getPlayerOnebyOne()
 
-        console.log(this.props.games)
+        console.log(this.props.games[gameId].timeStamp)
       
       
-      let currentTimeStamp = this.props.games[gameId-1].timeStamp
-      let array = this.props.players.filter((player)=>{
+      let currentTimeStamp = this.props.games[gameId].timeStamp
+      let array = this.props.games[gameId].allplayers.filter((player)=>{
         return currentTimeStamp ===player.timeStamp
       })
         console.log(array)
@@ -45,10 +45,10 @@ import { connect } from 'react-redux';
     //   for (let i = 1; i < array.length; i++) {
     //     this.props.getPlayerOnebyOne(array[i]);
     //   }
-
-     
+     this.props.getGame(gameId)
       this.props.history.push({
         pathname:"/game",
+        state: {localGame:this.props.games[gameId], localPlayers: []}
        });
        //redirecting it to game once someone clicks on a game
     }
@@ -66,15 +66,17 @@ import { connect } from 'react-redux';
         
     if (this.props.games) {
         let gamesArray = Array.from(this.props.games);
+        
         return gamesArray.map(game => {
             let string =""
-            for(let i=0; i < this.props.players.length; i++) {
-            if (this.props.players[i].timeStamp === game.timeStamp) {
+            console.log(game, game['allplayers']);
+            for(let i=0; i < game.allplayers.length; i++) {
+            if (game.allplayers[i].timeStamp === game.timeStamp) {
                //going through each of the players timestamp through their indexes and then accessing the 
                //game variable from the map argument to get the timestamp from each game
                //if they are equal to each other return this string 
                //""" "players
-                string = string + " " + this.props.players[i].name
+                string = string + " " + game.allplayers[i].name
 
             }
         }

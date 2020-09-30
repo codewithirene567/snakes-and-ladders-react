@@ -57,9 +57,7 @@ function playerReducer(state = intialState, action){
                 return p;
               }),
             }
-          case 'GET_THE_PLAYERS':
-            console.log(state.allplayers, action.payload)
-            return {...state, allplayers: action.payload}
+          
             //empty array
           case 'GET_FIRST_PLAYER':
             console.log(action.payload);
