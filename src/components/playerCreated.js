@@ -5,7 +5,8 @@ const PlayerCreated = (props) => {
  //console.log(props.players) //props is currently rendering an empty {}
      if (props.players) {
        return props.players.allplayers.map(player => {
-         return <div><li>{player.name}</li><br></br></div>
+         //console.log(player.playerId)
+         return <div><li key = {player.playerId}>{player.name}</li><br></br></div>
       })
     } else {
         return null

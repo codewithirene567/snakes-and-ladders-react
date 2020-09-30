@@ -25,7 +25,7 @@ handleChange = (event) => {
   //from dice.js how can I access stuff in playerreducer.js for move forward
 handleSubmit = (event) =>{
     event.preventDefault()
-   //console.log(this.props)
+   console.log(this.props)
     this.props.addPlayer({name: this.state.name, currentPostion: 0, playerId: this.variable})
    
     console.log(this.state)
@@ -36,7 +36,7 @@ handleSubmit = (event) =>{
     //     color: this.state.color
     // }
     // this.addPlayer(playerInfoObject)
-    this.variable ++
+    this.variable++
 }
 
 

@@ -4,8 +4,8 @@ export const moveForward = playerInfoObject => ({type:"MOVE_FORWARD", payload: p
 export const changePlayer = playerInfoObject => ({type: "CHANGE_PLAYER", payload: playerInfoObject})
 export const jump = (newPosition) => ({type:"JUMP", payload: newPosition})
 //export const won = (winnerNow)=> ({type:"WON", payload: winnerNow})
-export const startSaveGameRequest = (gameInfo) => ({type:'START_SAVE_GAME_REQUEST', payload: gameInfo})
-export const startSavePlayerRequest = (gameInfo) => ({type:'START_SAVE_PLAYER_REQUEST', payload: gameInfo})
+// export const startSaveGameRequest = (gameInfo) => ({type:'START_SAVE_GAME_REQUEST', payload: gameInfo})
+// export const startSavePlayerRequest = (gameInfo) => ({type:'START_SAVE_PLAYER_REQUEST', payload: gameInfo})
 export const setPlayers = players => ({type:"SET_PLAYER", payload: players})
 
 export const saveGame = (game, currentTimeStamp) =>{
@@ -96,7 +96,48 @@ export const getPlayers = () =>{
           }
            
         }
+        //--------------------------------
+        export const updateGame = (game, currentTimeStamp) =>{
+   
+            game.timeStamp = currentTimeStamp
+            let id = game.id
+            return ( dispatch) => {
+                const configObj ={
+                    method: 'PATCH',
+                    headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                   
+                },
+                body: JSON.stringify(game)
+                }
+                 fetch(`http://127.0.0.1:3000/game/${id}`, configObj)    
+                 .then(response => response.json())
+                 .then(data => {
+                    dispatch({type:'UPDATE_GAME', payload: data})
+                  })
+            }  
+        }
         
+        export const updatePlayers = (player, currentTimeStamp) =>{
+            let id = player.id
+            player.timeStamp = currentTimeStamp
+            return ( dispatch) => {
+                const configObj ={
+                    method: 'PATCH',
+                    headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(player)
+                }
+                 fetch(`http://127.0.0.1:3000/player${id}`, configObj)    
+                 .then(response => response.json())
+                 .then(data => {
+                    dispatch({type:'UPDATE_PLAYERS', payload: data})
+                  })
+            }  
+        }
 // .then(data => {
 //     dispatch(({type: 'START_SAVE_GAME_REQUEST', payload: data})
 // }) 

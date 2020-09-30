@@ -6,25 +6,32 @@ import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { saveGame, savePlayers } from '../actions/gameActions';
+import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame } from '../actions/gameActions';
 import listOfNewGames from '../components/listOfNewGames';
 
 
 //const Game = (props) => {
   class Game extends React.Component {
-  // constructor(props){
-  //   super(props)
-  //   this.props.state.loadedArray = []
-  
+  constructor(props){
+    super(props)
+    this.savedOnce = false
 
-  // }
+  }
 
     startSavingGame(event){
-      //if id exists from the backend
+       console.log(this.props)
+      // console.log(this.props.getAllGame().length)
+       this.props.getAllGame()
+      //  console.log(this.props)
+      console.log(this.savedOnce)
+// let games = this.props.gameState.length
+// if (games >this.props.gameState.id)
+      //id exists from the backend
       //notes: add a like button, previous save games list
       //understand plain react
     console.log("hit")
      let currentTimeStamp = Math.floor(Date.now()/1000)
+     console.log(this.props.gameState)
     this.props.saveGame(this.props.game, currentTimeStamp)
      for(let i=0; i < this.props.game.allplayers.length; i++){ 
      //if the player already has an id then send a patch requests
@@ -35,8 +42,15 @@ import listOfNewGames from '../components/listOfNewGames';
       // reset state here, redirect to home
       
       }
-      console.log(this.props.game);
+      this.savedOnce = true;
+      console.log(this.props.gameState);
   }
+  // saving game again object: {id: 4, currPlayer: 0, winStatus: false, winnerName: "", timeStamp: 1601401153}
+// currPlayer: 0
+// id: 4
+// timeStamp: 1601401153
+// winStatus: false
+// winnerName: ""
 
 render () {
     return (
@@ -82,7 +96,7 @@ checkWin(props){
       }
       
     }
-    return {winner:'Player '+highestName+' is winning!', winStatus: state.playerReducer.winStatus, game:state.playerReducer, state: state}
+    return {winner:'Player '+highestName+' is winning!', winStatus: state.playerReducer.winStatus, game:state.playerReducer, gameState: state.gameReducer, state: state}
     
 }
 
@@ -91,4 +105,4 @@ checkWin(props){
 //  const mapDispatchToProps = (dispatch) => {
 //    return {saveGame: () => dispatch(saveGame())}
 //  }
-   export default connect(mapStateToProps, {saveGame, savePlayers})(Game);
+   export default connect(mapStateToProps, {saveGame,getAllGame, savePlayers, updatePlayers, updateGame})(Game);

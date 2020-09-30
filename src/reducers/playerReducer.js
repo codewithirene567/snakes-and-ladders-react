@@ -71,6 +71,9 @@ function playerReducer(state = intialState, action){
               //reducer actions are adding the right players to the array with concat
               case 'SET_PLAYER':
                 return {...state, allplayers: action.payload}
+          case 'START_SAVE_PLAYER_REQUEST':
+            console.log(action.payload);
+            return state;
         default:
           return state
     }
