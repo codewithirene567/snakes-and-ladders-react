@@ -7,7 +7,7 @@ import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayers, setPlayers } from '../actions/gameActions';
-import listOfNewGames from '../components/listOfNewGames';
+
 
 
 //const Game = (props) => {
@@ -113,25 +113,9 @@ import listOfNewGames from '../components/listOfNewGames';
       
   }
   
-// componentDidMount() {
-
-//   this.props.getPlayers()
-// }
 
 render () {
 
-    // if (this.props.history.location.state.fromWhere === 'old') {
-    //   console.log(this.props.history.location.state.InGamePlayer);
-    //   this.props.setPlayers(this.props.history.location.state.InGamePlayer)
-    // }
-    
-  // let array = this.props.players.filter((player)=>{
-  //   return currentTimeStamp ===player.timeStamp
-  // })
-  //   console.log(array)
-  //   //make a new action to return a new array with all players inside
-  //   //debugger
-  //   this.props.setPlayers(array)
 
   console.log(this.props)
     return (

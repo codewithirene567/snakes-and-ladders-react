@@ -43,7 +43,7 @@ class PreviouslySavedGames extends React.Component {
       console.log(this.props.game)
       return(
       <div>
-        <h1>List of Previously Saved Games</h1>
+        <h1 className="savedGames">Previously Saved Games - Click to Load</h1>
         <div >
           <div>
           < ListOfNewGames 

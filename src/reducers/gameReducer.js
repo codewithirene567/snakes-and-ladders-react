@@ -16,9 +16,7 @@ function gameReducer(state = intialState, action) {
         console.log(action.payload);
         return state;
       case 'GET_THE_GAME':
-        console.log(action.payload)
-        console.log(state)
-       // console.log(action.payload)
+        
         return action.payload.map((p) => {
             p['allplayers'] = [];
             return {
@@ -26,24 +24,8 @@ function gameReducer(state = intialState, action) {
             }
           })
         //made an empty array for allplayers
-
-        return state = action.payload ;
-      // case 'GET_INITIAL_GAME':
-      //   return state = intialState;
-        // return {
-        //   ...state,
-        //   id: action.payload.id,
-        //   currPlayer: action.payload.currPlayer,
-        //   winStatus: action.payload.winStatus,
-        //   winnerName: action.payload.winnerName,
-        //   timeStamp: action.payload.timeStamp,
-        //   saved: false
-          
-        // }
         
       case 'GET_ONE_GAME':
-        console.log(action.payload)
-        console.log(state);
 
         return state = action.payload;
       case 'UPDATE_GAME':

@@ -45,16 +45,16 @@ render () {
     //console.log(this.state.value)
     
     return (
-        <div>
+        <div >
         <form onSubmit={this.handleSubmit}>
-        <label>
+        <label className="welcomeValue">
             Name:
-            <input type="text" name = "name"value={this.state.name} onChange={this.handleChange} />
+            <input className="welcome" type="text" name = "name"value={this.state.name} onChange={this.handleChange} />
         </label>
         <br></br>
         <br></br>
         
-        <input type="submit" value="Save Player" />
+        < input  className="welcome" type="submit" value="Save Player" />
         </form>
         
         <p>{this.state.value}</p>

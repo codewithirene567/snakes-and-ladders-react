@@ -1,5 +1,5 @@
-import React, { createContext } from 'react';
-import { Redirect, withRouter } from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom'
 import { getGame, getFirstPlayer, getPlayerOnebyOne, setPlayers } from '../actions/gameActions';
 import { connect } from 'react-redux';
 //const ListOfNewGames = (props) => {
@@ -80,9 +80,11 @@ import { connect } from 'react-redux';
 
             }
         }
-        
+        let newDate = new Date();
+        newDate.setTime(game.timeStamp*1000);
+        let dateString = newDate.toUTCString();
         //console.log(props.history)
-        return <div><button onClick = {(e) => this.handleClick(game.id, e, this.props)} >{game.timeStamp} {string}</button></div>
+        return <div><button className="savedGames" onClick = {(e) => this.handleClick(game.id, e, this.props)} >{dateString} {string}</button></div>
         })
        
     }

@@ -1,3 +1,8 @@
+body {background-color: lightskyblue;}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+}
 
 .square {
   background: orange;
@@ -73,6 +78,34 @@ h1 {
   perspective: 1000px;
   perspective-origin: 50% 100%;
 } */
+#personWin{
+  font-size: 60px;
+  text-align: center;
+}
+
+#resultTimestamp{
+  font-size: 60px;
+  text-align: center;
+}
+
+#hereResults{
+  font-size: 40px;
+}
+
+.welcomeValue{
+  font-size: 40px;
+  text-align: center;
+}
+
+.welcome{
+  font-size: 30px;
+  text-align: center;
+}
+
+.savedGames{
+  font-size: 40px;
+  text-align: center;
+}
 
 .dice {
   width: 100%;
@@ -163,10 +196,11 @@ h1 {
 
 #save {
   position: absolute;
- 
+ padding: 50px 0;
   left: 900px;
-  top: 120px;
+  top: 620px;
 }
+
 
 
 #snake-1{
@@ -195,7 +229,7 @@ h1 {
   position: absolute;
   transform: rotate(180deg);
   left: 600px;
-  top: 350px;
+  top: 380px;
   z-index: 3;
 }
 

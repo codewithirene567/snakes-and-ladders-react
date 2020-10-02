@@ -39,14 +39,20 @@ class Dice extends Component {
           
              this.props.players.winnerName = this.props.players.allplayers[i].name
              const timestamp = Math.floor(Date.now()/1000)
-             this.props.players.timeStamp = Intl.DateTimeFormat('en-US',{
-              year: "numeric",
-              month: "short",
-              day: "2-digit",
-              hour: "numeric",
-              minute: "2-digit",
-              second: "2-digit"
-            }).format(timestamp);
+            //  console.log(timestamp);
+             let newDate = new Date();
+             newDate.setTime(timestamp*1000);
+             let dateString = newDate.toUTCString();
+
+            //  this.props.players.timeStamp = Intl.DateTimeFormat('en-US',{
+            //   year: "numeric",
+            //   month: "short",
+            //   day: "2-digit",
+            //   hour: "numeric",
+            //   minute: "2-digit",
+            //   second: "2-digit"
+            // }).format(timestamp);
+            this.props.players.timeStamp = dateString;
             
              //timestamp logic change of state
             // console.log(this.props.players.allplayers[i].name)
@@ -65,6 +71,7 @@ class Dice extends Component {
         //for (let i=0; i < num; i++) {
         this.props.moveForward(num)
         //}
+        console.log(this.props.players.allplayers[this.props.players.currPlayer].currentPostion);
         switch(this.props.players.allplayers[this.props.players.currPlayer].currentPostion){
          case 74: {
          this.props.jump(57)

@@ -41,11 +41,11 @@ function playerReducer(state = intialState, action){
             // currentPostion: state.currentPosition +1}
         //player forward action next throguh this reducer
         case 'JUMP':
-
+          console.log(action.payload, state.currPlayer)
           return {...state,
             allplayers: state.allplayers.map((p) => {
-                
-                if (p.id === state.currPlayer) {
+                // console.log(p.id);
+                if (p.playerId === state.currPlayer) {
                   console.log(state, state.currPlayer)
 
                   return {

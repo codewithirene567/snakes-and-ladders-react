@@ -31,15 +31,15 @@ import { addPlayer, saveGame, getAllGame, savePlayers,getPlayers } from '../acti
 render () {
     return (
       
-      <div>
-      <div>
+      <div className="welcome">
+      <div  className="welcome">
         <h1>Welcome to Snakes and Ladders! Make some players by filling out your information below</h1><br></br>
         <PlayerInfo addPlayer={this.props.addPlayer} moveForward={this.props.moveForward}/>
       </div>
-      <div>
+      <div  className="welcome">
         <PlayerCreated players={this.props.players} />
         </div>
-        <button onClick={()=>{
+        <button  className="welcome" onClick={()=>{
           let currentTimeStamp = Math.floor(Date.now()/1000)
 
        
@@ -77,7 +77,7 @@ render () {
         }
         }>Start</button>
         <p>Already have a game started? Click the button below to play a previously saved game.</p>
-        <button onClick={()=>{this.props.history.push('/previouslysavedgames')}}>Load Saved Game</button>
+        <button className="welcome" onClick={()=>{this.props.history.push('/previouslysavedgames')}}>Load Saved Game</button>
         </div>
     )
     }

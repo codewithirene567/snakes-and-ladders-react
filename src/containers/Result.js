@@ -6,9 +6,9 @@ const Result = (props) => {
  
     return (
       <div>
-        <h1>Here are the results of the game you just played</h1>
-        <p>{props.winnerName} is the winner</p>
-        <p>{props.timeStamp}</p>
+        <h1 id="hereResults">Here are the results of the game you just played</h1>
+        <p id="personWin">{props.winnerName} is the winner</p>
+        <p id="resultTimestamp">{props.timeStamp}</p>
         
       </div>
       
