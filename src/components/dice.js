@@ -71,7 +71,7 @@ class Dice extends Component {
         //for (let i=0; i < num; i++) {
         this.props.moveForward(num)
         //}
-        console.log(this.props.players.allplayers[this.props.players.currPlayer].currentPostion);
+        //console.log(this.props.players.allplayers[this.props.players.currPlayer].currentPostion);
         switch(this.props.players.allplayers[this.props.players.currPlayer].currentPostion){
          case 74: {
          this.props.jump(57)

@@ -37,6 +37,9 @@ handleSubmit = (event) =>{
     // }
     // this.addPlayer(playerInfoObject)
     this.variable++
+    if (this.variable === 3){
+        document.getElementById('saveButton').disabled = true
+    }
 }
 
 
@@ -54,10 +57,10 @@ render () {
         <br></br>
         <br></br>
         
-        < input  className="welcome" type="submit" value="Save Player" />
+        < input  id="saveButton" className="welcome" type="submit" value="Save Player" />
         </form>
-        
-        <p>{this.state.value}</p>
+        <br></br>
+        <p>{this.state.value}</p> 
         </div>
     )
 }

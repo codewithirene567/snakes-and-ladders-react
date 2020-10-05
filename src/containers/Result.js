@@ -9,7 +9,7 @@ const Result = (props) => {
         <h1 id="hereResults">Here are the results of the game you just played</h1>
         <p id="personWin">{props.winnerName} is the winner</p>
         <p id="resultTimestamp">{props.timeStamp}</p>
-        
+        <button id="backToHome" onClick={()=>{props.history.push('/home')}}> Click here to go back to the home page</button>
       </div>
       
     )

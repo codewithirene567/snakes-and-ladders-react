@@ -12,6 +12,8 @@ const intialState = {
 
 function gameReducer(state = intialState, action) {
     switch (action.type) {
+      // case 'CLEAR_GAME_STATE':
+      //   return intialState;
       case 'START_SAVE_GAME_REQUEST':
         console.log(action.payload);
         return state;
@@ -28,14 +30,13 @@ function gameReducer(state = intialState, action) {
       case 'GET_ONE_GAME':
 
         return state = action.payload;
-      case 'UPDATE_GAME':
-        return {...state , 
-    
-          saved: true}
+       case 'UPDATE_GAME':
+         return {...state}
       case 'GET_THE_PLAYERS':
         console.log(state, action.payload)
         if (state.constructor === Array ) { 
         return state.map((game) => {
+          console.log(game)
           game['allplayers'] = action.payload;
           console.log(game, game.allplayers)
           return {

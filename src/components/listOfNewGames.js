@@ -1,12 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import { getGame, getFirstPlayer, getPlayerOnebyOne, setPlayers } from '../actions/gameActions';
+import { getGame, setPlayers } from '../actions/gameActions';
 import { connect } from 'react-redux';
 //const ListOfNewGames = (props) => {
     class ListOfNewGames extends React.Component {
     handleClick (gameId){
         //console.log(window.history)
-        alert(gameId)
+        //alert(gameId)
+        gameId--;
         //get stuff from database and put it into state
         //return <Redirect to="/game" />
         //let gameId = game.id
@@ -46,6 +47,7 @@ import { connect } from 'react-redux';
     //     this.props.getPlayerOnebyOne(array[i]);
     //   }
      this.props.getGame(gameId)
+     console.log(this.props.games[gameId]);
       this.props.history.push({
         pathname:"/game",
         state: {localGame:this.props.games[gameId], localPlayers: []}
@@ -112,4 +114,4 @@ import { connect } from 'react-redux';
  
 }
 //export default withRouter(ListOfNewGames);
-export default withRouter(connect(null, {getGame, getFirstPlayer, getPlayerOnebyOne, setPlayers})(ListOfNewGames));
+export default withRouter(connect(null, {getGame, setPlayers})(ListOfNewGames));

@@ -6,7 +6,8 @@ import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayers, setPlayers } from '../actions/gameActions';
+import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayers, setPlayers, updatePlayersArray } from '../actions/gameActions';
+import GamePanel from '../components/gamePanel';
 
 
 
@@ -20,29 +21,60 @@ import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayer
 
 
     startSavingGame(event){
-       console.log(this.props)
+       console.log(this.props.getPlayers())
       // console.log(this.props.getAllGame().length)
       console.log("Reading Games here");
       this.props.getPlayers()
+      this.props.getAllGame()
         console.log(this.props.gameState);
         console.log(this.props.history.location.state.localGame);
         //  this.props.history.location.state.IdOfGame
       //  this.props.history.location.state.fromWhere ???
         // console.log(this.props.state);
+        console.log(this.props.history.location.state.localGame)
         const newGame = {
           id: this.props.history.location.state.localGame.id,
-          currPlayer: this.props.game.currPlayer,
+         
+          currPlayer: (this.props.game.currPlayer+1)%this.props.game.allplayers.length,
           winStatus: this.props.game.winStatus,
           winnerName: this.props.game.winnerName,
           timeStamp: this.props.history.location.state.localGame.timeStamp
         }
         this.props.updateGame(newGame)
+        // this.props.updateGame(newGame)
 
 
         console.log(this.props.gameState);
-
-        if (this.props.history.location.state.localplayers == []) {
+        console.log(this.props.history.location.state);
+        console.log(this.props.history.location.state.localGame.allplayers);//localGame is the local game but
+        //an array of PLAYERS is still returned here, all players globally
+        if (this.props.history.location.state.localPlayers.length === 0) {
+          console.log("Came from previously saved game!");
         let j = 0;
+        // let i = 0;
+        let updatedPlayers = []
+        // for(let i=0; i < this.props.history.location.state.localGame.allplayers.length; i++){
+
+        // // }
+        // // this.props.history.location.state.localGame.allplayers.map((player) => {
+        // //   console.log(player, newGame);
+        //   if (newGame.timeStamp === this.props.history.location.state.localGame.allplayers[i].timeStamp) {
+        //         console.log(this.props.state.playerReducer.allplayers)
+        //         const newPlayer = {
+        //           id: this.props.history.location.state
+        //           name: player.name,
+        //           currentPostion: this.props.state.playerReducer.allplayers[j].currentPostion,
+        //           timeStamp: player.timeStamp,
+        //           playerId: player.playerId
+        //         }
+        //         console.log(newPlayer);
+        //         setTimeout(this.props.updatePlayers(newPlayer), 2000);
+        //         // this.props.updatePlayers(newPlayer)
+        //         j++;
+        //       }
+        //       // i++;
+        // })
+
         for(let i =0; i < this.props.history.location.state.localGame.allplayers.length; i++) {
           console.log(newGame.timeStamp, this.props.history.location.state.localGame.allplayers[i].timeStamp)
           if (newGame.timeStamp === this.props.history.location.state.localGame.allplayers[i].timeStamp) {
@@ -51,27 +83,60 @@ import { saveGame, savePlayers, updatePlayers, updateGame, getAllGame, getPlayer
               id: this.props.history.location.state.localGame.allplayers[i].id,
               name: this.props.history.location.state.localGame.allplayers[i].name,
               currentPostion: this.props.state.playerReducer.allplayers[j].currentPostion,
-              timeStamp: this.props.history.location.state.localGame.allplayers[i].timeStamp,
               playerId: this.props.history.location.state.localGame.allplayers[i].playerId
             }
-            this.props.updatePlayers(newPlayer)
+           //this.props.updatePlayers(newPlayer)
+            // this.props.updatePlayers(newPlayer)
+            updatedPlayers.push(newPlayer)
             j++;
           }
         }
+        this.props.updatePlayersArray(updatedPlayers)
       } else {
-        for(let i =0; i < this.props.history.location.state.localPlayers.length; i++) {
+        console.log("Came from new game!");
+        
+        // let i =0;
+        // console.log(this.props.state.playerReducer.allplayers)
+        // this.props.history.location.state.localPlayers.map((player) => {
+        //     const newPlayer = {
+        //     id: this.props.history.location.state.localGame.allplayers.length + i, //localGame.allplayers refers to all the players globally 
+        //     name: player.name,
+        //     currentPostion: this.props.state.playerReducer.allplayers[i].currentPostion,
+        //     timeStamp: player.timeStamp,
+        //     playerId: player.playerId
+        //   }
+        //   i++;
+        //   setTimeout(this.props.updatePlayers(newPlayer), 2000);
+        // })
+        let updatedPlayers = []
+       
+        for(let i =0; i < this.props.game.allplayers.length; i++) {
             console.log(this.props.history.location.state.localGame.allplayers.length + i,this.props.state.playerReducer.allplayers[i].currentPostion);
+          if (this.props.gameState.length !== 0){
           const newPlayer = {
-            id: this.props.history.location.state.localGame.allplayers.length + i,
+            id: this.props.history.location.state.localGame.allplayers.length + i + 1,
             name: this.props.history.location.state.localPlayers[i].name,
             currentPostion: this.props.state.playerReducer.allplayers[i].currentPostion,
-            timeStamp: this.props.history.location.state.localPlayers[i].timeStamp,
             playerId: this.props.history.location.state.localPlayers[i].playerId
           }
-          this.props.updatePlayers(newPlayer)
+          //this.props.updatePlayers(newPlayer)
+          updatedPlayers.push(newPlayer)
         }
+          else {
+            const newPlayer = {
+              id: i+1,
+              name: this.props.history.location.state.localPlayers[i].name,
+              currentPostion: this.props.state.playerReducer.allplayers[i].currentPostion,
+              playerId: this.props.history.location.state.localPlayers[i].playerId
+            }
+            updatedPlayers.push(newPlayer)
+          }
+        }
+        this.props.updatePlayersArray(updatedPlayers)
       }
 
+      this.props.history.replace({pathname:'/home', state: {refresh: true}})
+      
 
         // for(let i = 0; i < this.props.state.playerReducer.allplayers.length; i++) {
         //   // const currentplayer = this.props.state.playerReducer.allplayers[i]
@@ -125,9 +190,10 @@ render () {
         <Dice/>
         <Ladder />
         <Board />
-        {this.checkWin(this.props)}
-       <button id="save" onClick = {(event)=> this.startSavingGame(event)}>Save this game</button>
        
+        {this.checkWin(this.props)}
+       <button id="save" onClick = {(event)=> this.startSavingGame(event)} >Save this game</button>
+       <GamePanel />
       </div>
     )
   }
@@ -147,6 +213,10 @@ checkWin(props){
      let array=[]
      let highestName = ''
 
+    // let playerreducer= state.playerReducer
+    // playerreducer.currPlayer = state.gameReducer.currPlayer
+//change value of curr player in database to the localplayer reducer's current player, this way the 
+//new player turn for the restore of the previously saved game is the next player
 
     for(let i=0; i < state.playerReducer.allplayers.length; i++){
       console.log(state.playerReducer);
@@ -172,4 +242,4 @@ checkWin(props){
 //  const mapDispatchToProps = (dispatch) => {
 //    return {saveGame: () => dispatch(saveGame())}
 //  }
-   export default connect(mapStateToProps, {saveGame,getAllGame, savePlayers, updatePlayers, updateGame, getPlayers, setPlayers})(Game);
+   export default connect(mapStateToProps, {saveGame,getAllGame, savePlayers, updatePlayers, updateGame, getPlayers, setPlayers, updatePlayersArray})(Game);

@@ -10,6 +10,10 @@
 //the reducer that works while the game is in play
 function playerReducer(state = intialState, action){
     switch (action.type) {
+      // case 'CLEAR_PLAYER_STATE':
+      //   return intialState;
+      case 'CLEAR_PLAYER_STATE':
+        return intialState;
        case 'ADD_PLAYER':
           return {...state,
             allplayers: state.allplayers.concat(action.payload)};

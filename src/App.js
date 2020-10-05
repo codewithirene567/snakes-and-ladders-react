@@ -16,7 +16,7 @@ function App() {
       <Router>
         {/* <Switch> // built in logic to say if the path is here */}
     <Route path="/home" component={Home}></Route>
-    <Route exact path="/"><Redirect to="/home" /></Route>
+    <Route exact path="/"><Redirect to={{pathname:'/home', state: {refresh: false}}} /></Route>
     <Route path="/result" component={Result}></Route>
     <Route path="/game" component={Game}></Route>
     <Route path="/previouslysavedgames" component={PreviouslySavedGames}></Route>

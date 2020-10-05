@@ -107,6 +107,12 @@ h1 {
   text-align: center;
 }
 
+#backToHome{
+  font-size: 30px;
+  position: absolute;
+  left: 350px ;
+  text-align: center;
+}
 .dice {
   width: 100%;
   height: 100%;
@@ -270,4 +276,10 @@ h1 {
   position: relative;
   left: 140px;
   top: 860px;
+}
+
+#instructions{
+  position: absolute;
+  left: 50px;
+  top: 1060px;
 }
