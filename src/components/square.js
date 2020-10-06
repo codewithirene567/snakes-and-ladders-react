@@ -37,7 +37,8 @@ function Square(props) {
      
         
          
-        <td className="square" id={props.cellId}>
+        <td className="square" style = {{background: props.color}} id={props.cellId}>
+          {/* now when button is clicked props.color will have value from  */}
             {props.cellId +1}
             {conditionalPlayer1()}
             {conditionalPlayer2()}

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { addPlayer, saveGame, getAllGame, getPlayers, clearState, savePlayersArray } from '../actions/gameActions';
 import { useHistory } from 'react-router'
 
+
 //const Home = (props) => {
   class Home extends React.Component {
   //2
@@ -38,6 +39,8 @@ render () {
       
       <div className="welcome">
       <div  className="welcome">
+        
+      
         <h1>Welcome to Snakes and Ladders! Make some players by filling out your information below</h1><br></br>
         <PlayerInfo addPlayer={this.props.addPlayer} moveForward={this.props.moveForward}/>
       </div>
@@ -77,8 +80,9 @@ render () {
             timeStamp: currentTimeStamp,
           }
         }
+        console.log("a", )
        this.props.saveGame(initialGame)
-
+       console.log("b", )
         
           console.log(this.props.players.allplayers.length)
 
@@ -92,7 +96,7 @@ console.log("All local players", this.props.players.allplayers)
           this.props.history.push({pathname:'/game', state: {localGame: initialGame, localPlayers: this.props.players.allplayers}})//passing in information that would have been in the post
           //request-matches with line 92
         //this writing post request has not been posted to the database yet
-        //manually pass state
+        //manually pass state to immedietely give it value
         }
         }
         }
@@ -110,5 +114,5 @@ console.log("All local players", this.props.players.allplayers)
        Allgames: state.gameReducer
      
   })
-//1
+//1 
     export default connect(mapStateToProps,{addPlayer, saveGame, getAllGame, getPlayers, clearState, savePlayersArray})(Home)

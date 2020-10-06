@@ -26,6 +26,13 @@ body {
    z-index: -1;
 }
 
+
+#dark {
+  position: absolute;
+ padding: 50px 0;
+  left: 900px;
+  top: 420px;
+}
  
 
 h1 {

@@ -19,10 +19,13 @@ export const saveGame = (game) =>{
         },
         body: JSON.stringify(game)
         }
+        console.log("c")
          fetch('http://127.0.0.1:3000/game', configObj) 
+         
          .then(response => response.json())
          .then(data => {
             //dispatch(() => {savePlayers(player, currentTimeStamp)})
+            console.log("d")
             dispatch({type:'START_SAVE_GAME_REQUEST', payload: data})
 
           })

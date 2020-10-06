@@ -1,6 +1,7 @@
 import React from 'react';
 import Dice from '../components/dice'
 import Board from '../components/board'
+import Button from '../components/button'
 //import Player from '../components/player'
 import Snake from '../components/snakes'
 import Ladder from '../components/ladders'
@@ -129,7 +130,7 @@ render () {
         <Dice/>
         <Ladder />
         <Board />
-       
+        
         {this.checkWin(this.props)}
        <button id="save" onClick = {(event)=> this.startSavingGame(event)} >Save this game</button>
        <GamePanel />
