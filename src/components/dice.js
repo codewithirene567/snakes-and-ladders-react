@@ -64,14 +64,12 @@ class Dice extends Component {
 
       rollDoneCallback= (num) => {
        
-        console.log(this.state)
-        //debugger
+       
         // this.setState({side: `${num}`})
 
-        //for (let i=0; i < num; i++) {
+        
         this.props.moveForward(num)
-        //}
-        //console.log(this.props.players.allplayers[this.props.players.currPlayer].currentPostion);
+        
         switch(this.props.players.allplayers[this.props.players.currPlayer].currentPostion){
          case 74: {
          this.props.jump(57)
@@ -100,17 +98,16 @@ class Dice extends Component {
                   default:
                    
             }
-//if currentPosition ===3 {jump to(47)...make a case statement 
+
         this.won()
         this.props.changePlayer()
 
-        //debugger
-        //move backwards take in argument of one square to land on
+       
         
     }
     
 }
-    //players: state.playerReducer,
+    
  const mapStateToProps = (state) => ({
   players: state.playerReducer
   
@@ -119,4 +116,4 @@ class Dice extends Component {
  
  
 export default connect(mapStateToProps, {moveForward, changePlayer, jump})(Dice)
-// export default withRouter(Dice)
+

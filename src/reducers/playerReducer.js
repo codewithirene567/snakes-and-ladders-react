@@ -7,11 +7,10 @@
    timeStamp: ""
 
  }
-//the reducer that works while the game is in play
+
 function playerReducer(state = intialState, action){
     switch (action.type) {
-      // case 'CLEAR_PLAYER_STATE':
-      //   return intialState;
+    
       case 'CLEAR_PLAYER_STATE':
         return intialState;
        case 'ADD_PLAYER':
@@ -28,20 +27,20 @@ function playerReducer(state = intialState, action){
                     return {
                       ...p,
                       currentPostion: Math.min(state.allplayers[state.currPlayer].currentPostion + action.payload, 99)
-                      //if currentPostion line && if the current player 0 !== current ++1
+                      
                     }
                   }
                   return p;
                 }),
               }
             
-               case 'CHANGE_PLAYER':
-                 return {
-                   ...state,
-                   
-                   currPlayer: (state.currPlayer+1)%state.allplayers.length
-                   //it means that the value of current value is 3, value of c
-                 }
+        case 'CHANGE_PLAYER':
+          return {
+            ...state,
+            
+            currPlayer: (state.currPlayer+1)%state.allplayers.length
+            //it means that the value of current value is 3, value of c
+          }
             // currentPostion: state.currentPosition +1}
         //player forward action next throguh this reducer
         case 'JUMP':
@@ -61,21 +60,12 @@ function playerReducer(state = intialState, action){
                 return p;
               }),
             }
-          
-            //empty array
-          case 'GET_FIRST_PLAYER':
-            console.log(action.payload);
-            return {...state, allplayers: Array.from([action.payload])}
-          case 'GET_THE_PLAYER_ONEBYONE':
-            console.log(action.payload);
-            return {...state,
-              allplayers: state.allplayers.concat(action.payload)};
-              //reducer actions are adding the right players to the array with concat
-              case 'SET_PLAYER':
-                return {...state, allplayers: action.payload}
-          case 'START_SAVE_PLAYER_REQUEST':
-            console.log(action.payload);
-            return state;
+
+        case 'SET_PLAYER':
+          return {...state, allplayers: action.payload}
+        case 'START_SAVE_PLAYER_REQUEST':
+          console.log(action.payload);
+          return state;
         default:
           return state
     }

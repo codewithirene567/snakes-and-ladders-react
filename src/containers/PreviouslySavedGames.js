@@ -5,16 +5,7 @@ import ListOfNewGames from '../components/listOfNewGames';
 
 
 class PreviouslySavedGames extends React.Component {
-  
-  //   grabGame(event){
-  // //      let game = props.getGame()
-  // //      let players = props.getPlayers()
-  //      console.log(this.props.game)
-  //      console.log(this.props.player)
-  //      console.log("grabGame")
-       
 
-  //   }
 
    componentDidMount() {
     console.log("run component did mount ")

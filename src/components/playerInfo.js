@@ -21,8 +21,7 @@ handleChange = (event) => {
         console.log(this.state)
  
 }
-  // this.setState({color: this.color})
-  //from dice.js how can I access stuff in playerreducer.js for move forward
+ 
 handleSubmit = (event) =>{
     event.preventDefault()
    console.log(this.props)
@@ -31,11 +30,7 @@ handleSubmit = (event) =>{
     console.log(this.state)
        this.setState({name: '', color:'',
        })
-    //   const playerInfoObject = {
-    //     name: this.state.name,
-    //     color: this.state.color
-    // }
-    // this.addPlayer(playerInfoObject)
+    
     this.variable++
     if (this.variable === 3){
         document.getElementById('saveButton').disabled = true
@@ -45,7 +40,7 @@ handleSubmit = (event) =>{
 
 
 render () {
-    //console.log(this.state.value)
+  
     
     return (
         <div >
@@ -69,13 +64,6 @@ render () {
 
 
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addPlayer: (player) => dispatch({
-//             type: 'ADD_PLAYER',
-//             payload: player
-//         })
-//     }
-// }
+
 
 export default (PlayerInfo)

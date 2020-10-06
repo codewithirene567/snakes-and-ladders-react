@@ -4,9 +4,9 @@ import Player from './player'
 import {connect} from 'react-redux'
 
 function Square(props) {
-   //console.log(props)
+  
       function conditionalPlayer1() {
-         // if (props.cellId === props.player1.currentPostion){
+         
             if(props.player1 != null && props.cellId === props.player1.currentPostion) {
               return <Player id= "pawn1" link = "https://www.iconfinder.com/data/icons/chess-26/128/2-512.png"/>
          } 
@@ -30,13 +30,11 @@ function Square(props) {
             }
            }
       
-              //could be props.player[0]
-              //pass down props of player color
+           
     
     return (
         
-         //conditional statement in square, render player if id, make props.value show number on board, connect squares to the store
-         //do any of these 4 squares have id equal to props.value
+     
         
          
         <td className="square" id={props.cellId}>
@@ -51,7 +49,6 @@ function Square(props) {
 //four players back from store, get an array of players, pass down information about the color
 //player 1 is this player 2 is that or set an array props.player[0] first person
 const mapStateToProps= (state) => ({
-   // console.log(state)
     //state from the store
     //anything you return from here is now a prop
     
@@ -66,5 +63,5 @@ const mapStateToProps= (state) => ({
 
 export default connect(mapStateToProps)(Square)
 
-//npm install --save redux-devtools-extension
+
 

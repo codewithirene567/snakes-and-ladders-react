@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-//import thunk from 'thunk';
+
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 import rootReducer from './reducers/index'
@@ -36,4 +36,3 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-//ROUTES defined here
