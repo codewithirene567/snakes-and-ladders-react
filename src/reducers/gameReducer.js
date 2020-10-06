@@ -45,10 +45,10 @@ function gameReducer(state = intialState, action) {
           }
         })
         } else {
-          return {
+          return [{
             ...state,
             allplayers: action.payload
-          }
+          }]
         }
         // return {...state, allplayers: action.payload}
       default:
