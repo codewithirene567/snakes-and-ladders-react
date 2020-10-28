@@ -59,5 +59,18 @@ app.get('/game', (req, res) => {
   )
 });
 
+app.get('/player', (req, res) => {
+  request(
+    { url: 'https://fast-journey-86003.herokuapp.com/player' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
