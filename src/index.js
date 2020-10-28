@@ -36,18 +36,28 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 //------------------------------------
-let express = require('express')
-let cors = require('cors')
-let app = express()
- 
-app.use(cors())
-app.use('/game', gameRoutes)
-app.use('/player', playerRoutes) 
-export default app;
-// app.get('/products/:id', function (req, res, next) {
-//   res.json({msg: 'This is CORS-enabled for all origins!'})
-// })
- 
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
+const express = require('express');
+const request = require('request');
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/game', (req, res) => {
+  request(
+    { url: 'https://fast-journey-86003.herokuapp.com/game' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
