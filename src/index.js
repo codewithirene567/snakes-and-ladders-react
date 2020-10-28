@@ -36,41 +36,41 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 //------------------------------------
-const express = require('express');
-const request = require('request');
+// const express = require('express');
+// const request = require('request');
 
-const app = express();
+// const app = express();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
-app.get('/game', (req, res) => {
-  request(
-    { url: 'https://fast-journey-86003.herokuapp.com/game' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
+// app.get('/game', (req, res) => {
+//   request(
+//     { url: 'https://fast-journey-86003.herokuapp.com/game' },
+//     (error, response, body) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: 'error', message: err.message });
+//       }
 
-      res.json(JSON.parse(body));
-    }
-  )
-});
+//       res.json(JSON.parse(body));
+//     }
+//   )
+// });
 
-app.get('/player', (req, res) => {
-  request(
-    { url: 'https://fast-journey-86003.herokuapp.com/player' },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
+// app.get('/player', (req, res) => {
+//   request(
+//     { url: 'https://fast-journey-86003.herokuapp.com/player' },
+//     (error, response, body) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: 'error', message: err.message });
+//       }
 
-      res.json(JSON.parse(body));
-    }
-  )
-});
+//       res.json(JSON.parse(body));
+//     }
+//   )
+// });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => console.log(`listening on ${PORT}`));
