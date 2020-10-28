@@ -20,7 +20,7 @@ export const saveGame = (game) =>{
         body: JSON.stringify(game)
         }
         console.log("c")
-         fetch('http://127.0.0.1:3000/game', configObj) 
+         fetch('https://fast-journey-86003.herokuapp.com/game', configObj) 
          
          .then(response => response.json())
          .then(data => {
@@ -70,7 +70,7 @@ export const savePlayersArray = (players, currentTimeStamp) => {
         },
         body: JSON.stringify(players)
         }
-        fetch('http://127.0.0.1:3000/player', configObj)    
+        fetch('https://fast-journey-86003.herokuapp.com/player', configObj)    
          .then(response => response.json())
          .then(data => {
             dispatch({type:'START_SAVE_PLAYER_REQUEST', payload: data})
@@ -83,7 +83,7 @@ export const savePlayersArray = (players, currentTimeStamp) => {
 export const getGame = (gameId) =>{
    
     return (dispatch) => {
-        fetch('http://127.0.0.1:3000/game/'+gameId)
+        fetch('https://fast-journey-86003.herokuapp.com/game/'+gameId)
         .then(response => response.json())
         .then(data => dispatch({type: 'GET_ONE_GAME', payload:data}))
       }
@@ -92,7 +92,7 @@ export const getGame = (gameId) =>{
 export const getAllGame = () =>{
    
     return (dispatch) => {
-        fetch('http://127.0.0.1:3000/game/')
+        fetch('https://fast-journey-86003.herokuapp.com/game/')
         .then(response => response.json())
         .then(data => dispatch({type: 'GET_THE_GAME', payload:data}))
       }
@@ -100,7 +100,7 @@ export const getAllGame = () =>{
 
 export const getPlayers = () =>{
     return (dispatch) => {
-        fetch(`http://127.0.0.1:3000/player`)
+        fetch(`https://fast-journey-86003.herokuapp.com/player`)
         .then(response => response.json())
         .then(data => dispatch({type: 'GET_THE_PLAYERS', payload:data}))
       }
@@ -122,7 +122,7 @@ export const getPlayers = () =>{
                 },
                 body: JSON.stringify(game)
                 }
-                 fetch('http://127.0.0.1:3000/game/'+id, configObj)    
+                 fetch('https://fast-journey-86003.herokuapp.com/game/'+id, configObj)    
                  .then(response => response.json())
                 //  .then(data => {
                 //     dispatch({type:'UPDATE_GAME', payload: data})
@@ -160,7 +160,7 @@ export const getPlayers = () =>{
                 },
                 body: JSON.stringify(players)
                 }
-                fetch('http://127.0.0.1:3000/player/'+players[0].id, configObj)    
+                fetch('https://fast-journey-86003.herokuapp.com/player/'+players[0].id, configObj)    
                  .then(response => response.json())
                  .then(data => {
                     dispatch({type:'UPDATE_PLAYERS', payload: data})
